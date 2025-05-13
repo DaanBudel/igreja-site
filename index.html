@@ -183,7 +183,12 @@
     let currentQuestionIndex = 0;
     let score = 0;
 
-    // Determine the question of the day based on the date
-    const today = new Date();
-    const dayOfYear = today.getDate();
-    const questionIndex = dayOfYear
+    // Display current question and options
+    function displayQuestion() {
+      const question = quizQuestions[currentQuestionIndex];
+      const questionContainer = document.getElementById("question-container");
+      questionContainer.innerHTML = `
+        <h4>${question.question}</h4>
+        ${question.options.map((option, index) => `
+          <label>
+            <input
