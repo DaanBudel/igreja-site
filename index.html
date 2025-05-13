@@ -18,10 +18,6 @@
       padding: 20px;
       text-align: center;
     }
-    header img {
-      height: 80px;
-      margin-bottom: 10px;
-    }
     nav {
       background-color: #0018F9;
       text-align: center;
@@ -38,12 +34,6 @@
       max-width: 800px;
       margin: auto;
     }
-    .gallery img {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 15px;
-      border-radius: 8px;
-    }
     footer {
       background-color: #0018F9;
       color: white;
@@ -58,27 +48,24 @@
       cursor: pointer;
       border-radius: 4px;
     }
-    input, textarea {
-      width: 100%;
-      padding: 8px;
-      margin: 5px 0;
+    .quiz-container {
+      background-color: #f4f4f4;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
     }
-    #welcome-message {
-      font-size: 2em;  /* Increased size for visibility */
-      font-weight: bold;
-      color: red;  /* Changed to red */
-      margin-top: 20px;
-      margin-bottom: 40px;
+    .quiz-container h3 {
+      margin-bottom: 10px;
+    }
+    .quiz-container label {
+      display: block;
+      margin: 5px 0;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo da igreja" />
     <h1>Assembleia de Deus Missionária - Antuérpia</h1>
-    <p id="verse"></p>
-    <!-- Moved 'Jezus houdt van jou' message here -->
-    <div id="welcome-message" style="color: red;">Jezus houdt van jou</div>
   </header>
 
   <nav>
@@ -87,49 +74,35 @@
     <a href="#galeria">Galeria</a>
     <a href="#doacao">Doações</a>
     <a href="#contato">Contato</a>
+    <a href="#quiz">Quiz</a>
   </nav>
+
+  <!-- Bible Verse Quiz -->
+  <section id="quiz" class="quiz-container">
+    <h3>Quiz: Qual o Livro da Bíblia?</h3>
+    <p><strong>Versículo:</strong> "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito..."</p>
+
+    <form id="quiz-form">
+      <label>
+        <input type="radio" name="answer" value="John" /> João
+      </label>
+      <label>
+        <input type="radio" name="answer" value="Matthew" /> Mateus
+      </label>
+      <label>
+        <input type="radio" name="answer" value="Luke" /> Lucas
+      </label>
+      <label>
+        <input type="radio" name="answer" value="Mark" /> Marcos
+      </label>
+      <button type="button" onclick="checkAnswer()">Enviar Resposta</button>
+    </form>
+    <p id="result" style="font-weight: bold;"></p>
+  </section>
 
   <section id="sobre">
     <h2>Sobre Nós</h2>
     <p>Somos uma comunidade cristã comprometida com a missão de pregar o evangelho em Antuérpia e além. Venha adorar conosco!</p>
-  </section>
-
-  <section id="cultos">
-    <h2>Horários de Culto</h2>
-    <ul>
-      <li><strong>Quinta-feira:</strong> Culto às 19:30</li>
-      <li><strong>Domingo:</strong> Escola Bíblica às 09:00</li>
-      <li><strong>Domingo:</strong> Culto principal às 10:30</li>
-    </ul>
-    <p><strong>Endereço:</strong> Bredabaan 449, Merksem</p>
-  </section>
-
-  <section id="galeria">
-    <h2>Galeria de Fotos</h2>
-    <div class="gallery">
-      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/309603943_174812878423998_3474919244627724909_n.jpg" alt="Foto 1" />
-      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/308296958_174812801757339_8813196856363625982_n.jpg" alt="Foto 2" />
-    </div>
-  </section>
-
-  <section id="doacao">
-    <h2>Doações</h2>
-    <p>Ajude-nos a continuar com a obra de Deus. Sua contribuição faz a diferença!</p>
-    <form action="https://www.paypal.com/donate" method="post" target="_blank">
-      <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE" />
-      <button type="submit">Contribuir com PayPal</button>
-    </form>
-  </section>
-
-  <section id="contato">
-    <h2>Contato</h2>
-    <p>Facebook: <a href="https://www.facebook.com/AssembleiaDeDeusMissionariaAntuerpia" target="_blank">Clique aqui</a></p>
-    <form onsubmit="alert('Mensagem enviada com sucesso!'); return false;">
-      <input type="text" placeholder="Seu nome" required />
-      <input type="email" placeholder="Seu email" required />
-      <textarea placeholder="Sua mensagem" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
   </section>
 
   <footer>
@@ -137,14 +110,25 @@
   </footer>
 
   <script>
-    const verses = [
-      "O Senhor é o meu pastor; nada me faltará. – Salmo 23:1",
-      "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito. – João 3:16",
-      "Entrega o teu caminho ao Senhor; confia nele, e ele o fará. – Salmo 37:5",
-      "Buscai ao Senhor enquanto se pode achar. – Isaías 55:6"
-    ];
-    const verse = verses[Math.floor(Math.random() * verses.length)];
-    document.getElementById("verse").textContent = verse;
+    function checkAnswer() {
+      const resultElement = document.getElementById("result");
+      const selectedAnswer = document.querySelector('input[name="answer"]:checked');
+
+      if (!selectedAnswer) {
+        resultElement.textContent = "Por favor, selecione uma resposta!";
+        resultElement.style.color = "red";
+        return;
+      }
+
+      const correctAnswer = "John"; // The correct book is "John"
+      if (selectedAnswer.value === correctAnswer) {
+        resultElement.textContent = "Correto! O versículo vem de João 3:16.";
+        resultElement.style.color = "green";
+      } else {
+        resultElement.textContent = "Errado! A resposta correta é João.";
+        resultElement.style.color = "red";
+      }
+    }
   </script>
 </body>
 </html>
