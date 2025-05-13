@@ -7,13 +7,17 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #ffffff;
       color: #000;
       margin: 0;
       padding: 0;
+      background-image: url('https://wallpapers.com/images/high/dove-2507-x-1605-background-r182p1j0nk2j3wrs.webp'); /* Dove and sky background */
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
     }
     header {
-      background-color: #0018F9;
+      background-color: rgba(0, 24, 249, 0.8); /* Semi-transparent background for header */
       color: white;
       padding: 20px;
       text-align: center;
@@ -37,6 +41,8 @@
       padding: 20px;
       max-width: 800px;
       margin: auto;
+      background-color: rgba(255, 255, 255, 0.8); /* Slight background transparency for readability */
+      border-radius: 8px;
     }
     .gallery img {
       max-width: 100%;
@@ -151,18 +157,9 @@
     <p><strong>Versículo:</strong> "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito..."</p>
 
     <form id="quiz-form">
-      <label>
-        <input type="radio" name="answer" value="John" /> João
-      </label>
-      <label>
-        <input type="radio" name="answer" value="Matthew" /> Mateus
-      </label>
-      <label>
-        <input type="radio" name="answer" value="Luke" /> Lucas
-      </label>
-      <label>
-        <input type="radio" name="answer" value="Mark" /> Marcos
-      </label>
+      <div id="question-container">
+        <!-- Questions will be dynamically injected here -->
+      </div>
       <button type="button" onclick="checkAnswer()">Enviar Resposta</button>
     </form>
     <p id="result" style="font-weight: bold;"></p>
@@ -173,16 +170,38 @@
   </footer>
 
   <script>
-    const verses = [
-      "O Senhor é o meu pastor; nada me faltará. – Salmo 23:1",
-      "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito. – João 3:16",
-      "Entrega o teu caminho ao Senhor; confia nele, e ele o fará. – Salmo 37:5",
-      "Buscai ao Senhor enquanto se pode achar. – Isaías 55:6"
+    const quizQuestions = [
+      { question: "Em que livro da Bíblia encontramos o versículo 'Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito...'", options: ["João", "Mateus", "Marcos", "Lucas"], answer: "João" },
+      { question: "Qual livro da Bíblia é o primeiro do Novo Testamento?", options: ["Mateus", "Atos", "Marcos", "Lucas"], answer: "Mateus" },
+      { question: "Onde Jesus foi crucificado?", options: ["Jerusalém", "Nazareth", "Belém", "Cafarnaum"], answer: "Jerusalém" },
+      { question: "Qual discípulo negou Jesus três vezes?", options: ["Pedro", "João", "Tiago", "André"], answer: "Pedro" },
+      { question: "Qual livro da Bíblia relata a criação do mundo?", options: ["Gênesis", "Êxodo", "Levítico", "Números"], answer: "Gênesis" },
+      { question: "Quem foi lançado na cova dos leões?", options: ["Daniel", "Davi", "Moisés", "Paulo"], answer: "Daniel" },
+      { question: "Qual foi o último livro do Novo Testamento?", options: ["Apocalipse", "Hebreus", "Tiago", "Judas"], answer: "Apocalipse" },
+      { question: "Qual profeta desafiou os profetas de Baal?", options: ["Elias", "Isaías", "Jeremias", "Miquéias"], answer: "Elias" },
+      { question: "Em qual cidade Jesus nasceu?", options: ["Belém", "Jerusalém", "Nazareth", "Cafarnaum"], answer: "Belém" },
+      { question: "Quem escreveu o livro de Atos?", options: ["Lucas", "Paulo", "João", "Pedro"], answer: "Lucas" }
     ];
-    const verse = verses[Math.floor(Math.random() * verses.length)];
-    document.getElementById("verse").textContent = verse;
 
-    // Quiz functionality
+    // Determine the question of the day based on the date
+    const today = new Date();
+    const dayOfYear = today.getDate(); // Get the day of the year (1-31)
+    const questionIndex = dayOfYear % quizQuestions.length; // Rotate questions based on the day
+
+    const question = quizQuestions[questionIndex];
+
+    // Display the current question and options
+    const questionContainer = document.getElementById('question-container');
+    questionContainer.innerHTML = `
+      <p><strong>Questão:</strong> ${question.question}</p>
+      ${question.options.map((option, index) => `
+        <label>
+          <input type="radio" name="answer" value="${option}" /> ${option}
+        </label>
+      `).join('')}
+    `;
+
+    // Function to check the answer
     function checkAnswer() {
       const resultElement = document.getElementById("result");
       const selectedAnswer = document.querySelector('input[name="answer"]:checked');
@@ -193,12 +212,11 @@
         return;
       }
 
-      const correctAnswer = "John"; // The correct book is "John"
-      if (selectedAnswer.value === correctAnswer) {
-        resultElement.textContent = "Correto! O versículo vem de João 3:16.";
+      if (selectedAnswer.value === question.answer) {
+        resultElement.textContent = "Correto!";
         resultElement.style.color = "green";
       } else {
-        resultElement.textContent = "Errado! A resposta correta é João.";
+        resultElement.textContent = `Errado! A resposta correta é ${question.answer}.`;
         resultElement.style.color = "red";
       }
     }
