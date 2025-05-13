@@ -186,40 +186,4 @@
     // Display current question and options
     function displayQuestion() {
       const question = quizQuestions[currentQuestionIndex];
-      const questionContainer = document.getElementById("question-container");
-      questionContainer.innerHTML = `
-        <h4>${question.question}</h4>
-        ${question.options.map((option, index) => `
-          <label>
-            <input type="radio" name="answer" value="${option}" /> ${option}
-          </label>
-        `).join('')}
-      `;
-    }
-
-    // Move to next question
-    function nextQuestion() {
-      const selectedAnswer = document.querySelector('input[name="answer"]:checked');
-      if (selectedAnswer) {
-        const correctAnswer = quizQuestions[currentQuestionIndex].answer;
-        if (selectedAnswer.value === correctAnswer) {
-          score++;
-        }
-
-        currentQuestionIndex++;
-        if (currentQuestionIndex < quizQuestions.length) {
-          displayQuestion();
-        } else {
-          document.getElementById('result').innerText = `Você acertou ${score} de 10!`;
-          document.getElementById('next-button').disabled = true;
-        }
-      } else {
-        alert('Por favor, selecione uma resposta.');
-      }
-    }
-
-    // Initial call to display the first question
-    displayQuestion();
-  </script>
-</body>
-</html>
+      const questionContainer = document.getElement
