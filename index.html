@@ -96,7 +96,6 @@
     <img src="logo.png" alt="Logo da igreja" />
     <h1>Assembleia de Deus Missionária - Antuérpia</h1>
     <p id="verse"></p>
-    <!-- Moved 'Jezus houdt van jou' message here -->
     <div id="welcome-message">Jezus houdt van jou</div>
   </header>
 
@@ -154,13 +153,11 @@
   <!-- Quiz Section -->
   <section class="quiz-container">
     <h3>Quiz: Qual o Livro da Bíblia?</h3>
-    <p><strong>Versículo:</strong> "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito..."</p>
-
     <form id="quiz-form">
       <div id="question-container">
         <!-- Questions will be dynamically injected here -->
       </div>
-      <button type="button" onclick="checkAnswer()">Enviar Resposta</button>
+      <button type="button" id="next-button" onclick="nextQuestion()">Próxima Pergunta</button>
     </form>
     <p id="result" style="font-weight: bold;"></p>
   </section>
@@ -183,43 +180,10 @@
       { question: "Quem escreveu o livro de Atos?", options: ["Lucas", "Paulo", "João", "Pedro"], answer: "Lucas" }
     ];
 
+    let currentQuestionIndex = 0;
+    let score = 0;
+
     // Determine the question of the day based on the date
     const today = new Date();
-    const dayOfYear = today.getDate(); // Get the day of the year (1-31)
-    const questionIndex = dayOfYear % quizQuestions.length; // Rotate questions based on the day
-
-    const question = quizQuestions[questionIndex];
-
-    // Display the current question and options
-    const questionContainer = document.getElementById('question-container');
-    questionContainer.innerHTML = `
-      <p><strong>Questão:</strong> ${question.question}</p>
-      ${question.options.map((option, index) => `
-        <label>
-          <input type="radio" name="answer" value="${option}" /> ${option}
-        </label>
-      `).join('')}
-    `;
-
-    // Function to check the answer
-    function checkAnswer() {
-      const resultElement = document.getElementById("result");
-      const selectedAnswer = document.querySelector('input[name="answer"]:checked');
-
-      if (!selectedAnswer) {
-        resultElement.textContent = "Por favor, selecione uma resposta!";
-        resultElement.style.color = "red";
-        return;
-      }
-
-      if (selectedAnswer.value === question.answer) {
-        resultElement.textContent = "Correto!";
-        resultElement.style.color = "green";
-      } else {
-        resultElement.textContent = `Errado! A resposta correta é ${question.answer}.`;
-        resultElement.style.color = "red";
-      }
-    }
-  </script>
-</body>
-</html>
+    const dayOfYear = today.getDate();
+    const questionIndex = dayOfYear
