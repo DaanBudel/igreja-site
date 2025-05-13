@@ -3,190 +3,139 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>AD Missionária - Antuérpia</title>
+  <title>Assembleia de Deus Missionária - Antuérpia</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
       background-color: #ffffff;
-      color: #333;
+      color: #000;
+      margin: 0;
+      padding: 0;
     }
-
     header {
       background-color: #0018F9;
       color: white;
-      padding: 2em 1em;
+      padding: 20px;
       text-align: center;
     }
-
     header img {
-      max-width: 150px;
-      height: auto;
+      height: 80px;
       margin-bottom: 10px;
-      border-radius: 10px;
     }
-
     nav {
-      background-color: #0010b5;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1em;
-      padding: 10px 0;
+      background-color: #0018F9;
+      text-align: center;
+      padding: 10px;
     }
-
     nav a {
       color: white;
+      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
     }
-
     section {
-      padding: 2em;
-      max-width: 1000px;
+      padding: 20px;
+      max-width: 800px;
       margin: auto;
     }
-
-    h2 {
-      color: #0018F9;
-    }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1em;
-    }
-
     .gallery img {
-      width: 100%;
-      max-width: 300px;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 15px;
       border-radius: 8px;
     }
-
-    form {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    input, textarea {
-      padding: 10px;
-      font-size: 1em;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    button {
-      background-color: #0018F9;
-      color: white;
-      border: none;
-      padding: 10px;
-      font-size: 1em;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
     footer {
       background-color: #0018F9;
       color: white;
       text-align: center;
-      padding: 1em;
+      padding: 15px;
     }
-
-    @media (max-width: 600px) {
-      nav {
-        flex-direction: column;
-      }
+    button {
+      background-color: #0018F9;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/308109550_174812785090674_3243926765759956750_n.png?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ZYIgv1QNljoQ7kNvwHPXNKG&_nc_oc=AdkG9-DyaOJI1_si9OZ1dfGX67QPxrCXrrg8Sa5rnlBUVbxLXgQ_Eiq9jw1Uk79NHP30gKcrXPZ0SCfnw0idEQCW&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=H1LPk0ng0szUVY2eyQzi5A&oh=00_AfL1sf6J-xUTCcctlRSixpEbxe2GrhxzVZkNC4s2lTw9BA&oe=6829496E" alt="Logo" />
-    <h1>Assembléia de Deus Missionária - Antuérpia</h1>
-    <p>Bredabaan 449, Merksem</p>
-    <p>Quinta-feira 19:30 | Domingo 9:00 (Escola Bíblica), 10:30 (Culto Principal)</p>
+    <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/308109550_174812785090674_3243926765759956750_n.png?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ZYIgv1QNljoQ7kNvwHPXNKG&_nc_oc=AdkG9-DyaOJI1_si9OZ1dfGX67QPxrCXrrg8Sa5rnlBUVbxLXgQ_Eiq9jw1Uk79NHP30gKcrXPZ0SCfnw0idEQCW&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=H1LPk0ng0szUVY2eyQzi5A&oh=00_AfL1sf6J-xUTCcctlRSixpEbxe2GrhxzVZkNC4s2lTw9BA&oe=6829496E" alt="Logo da igreja" />
+    <h1>Assembleia de Deus Missionária - Antuérpia</h1>
+    <p id="verse"></p>
   </header>
 
   <nav>
-    <a href="#versiculo">Versículo</a>
     <a href="#sobre">Sobre</a>
-    <a href="#pastor">Pastor</a>
     <a href="#cultos">Cultos</a>
     <a href="#galeria">Galeria</a>
     <a href="#doacao">Doações</a>
     <a href="#contato">Contato</a>
   </nav>
 
-  <section id="versiculo">
-    <h2>Versículo do Dia</h2>
-    <p id="verso">Carregando...</p>
-  </section>
-
   <section id="sobre">
     <h2>Sobre Nós</h2>
-    <p>Somos uma igreja pentecostal que busca a presença de Deus, prega a verdade da Bíblia e acolhe a todos que desejam conhecer a salvação em Cristo.</p>
-    <p>Nossa missão é: <strong>Ganhar almas, edificar vidas, e preparar discípulos para o Reino de Deus.</strong></p>
-  </section>
-
-  <section id="pastor">
-    <h2>Mensagem do Pastor</h2>
-    <p>Querida igreja, que a paz do Senhor esteja com todos. Nossa missão não termina nos cultos, mas continua em cada casa, rua e coração que tocamos com o amor de Deus. Perseverem na fé e na comunhão. Estamos juntos nesta caminhada!</p>
-    <p><strong>Pr. João da Silva</strong></p>
+    <p>Somos uma comunidade cristã comprometida com a missão de pregar o evangelho em Antuérpia e além. Venha adorar conosco!</p>
   </section>
 
   <section id="cultos">
-    <h2>Nossos Cultos</h2>
+    <h2>Horários de Culto</h2>
     <ul>
-      <li><strong>Quinta-feira:</strong> Culto de ensino às 19:30</li>
-      <li><strong>Domingo:</strong> Escola Bíblica às 9:00</li>
-      <li><strong>Domingo:</strong> Culto de Celebração às 10:30</li>
+      <li><strong>Quinta-feira:</strong> Culto às 19:30</li>
+      <li><strong>Domingo:</strong> Escola Bíblica às 09:00</li>
+      <li><strong>Domingo:</strong> Culto principal às 10:30</li>
     </ul>
+    <p><strong>Endereço:</strong> Bredabaan 449, Merksem</p>
   </section>
 
-  <section id="galeria" class="gallery">
-    <h2>Galeria</h2>
-    <img src="https://via.placeholder.com/300x200?text=Imagem+1" alt="Foto 1" />
-    <img src="https://via.placeholder.com/300x200?text=Imagem+2" alt="Foto 2" />
-    <img src="https://via.placeholder.com/300x200?text=Imagem+3" alt="Foto 3" />
+  <section id="galeria">
+    <h2>Galeria de Fotos</h2>
+    <div class="gallery">
+      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/309603943_174812878423998_3474919244627724909_n.jpg" alt="Foto 1" />
+      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/308296958_174812801757339_8813196856363625982_n.jpg" alt="Foto 2" />
+    </div>
   </section>
 
   <section id="doacao">
     <h2>Doações</h2>
     <p>Ajude-nos a continuar com a obra de Deus. Sua contribuição faz a diferença!</p>
-    <button onclick="alert('Link para doação em breve')">Contribuir Agora</button>
+    <form action="https://www.paypal.com/donate" method="post" target="_blank">
+      <input type="hidden" name="hosted_button_id" value="YOUR_BUTTON_ID_HERE" />
+      <button type="submit">Contribuir com PayPal</button>
+    </form>
   </section>
 
   <section id="contato">
-    <h2>Contato & Pedidos de Oração</h2>
-    <form>
+    <h2>Contato</h2>
+    <p>Facebook: <a href="https://www.facebook.com/AssembleiaDeDeusMissionariaAntuerpia" target="_blank">Clique aqui</a></p>
+    <form onsubmit="alert('Mensagem enviada com sucesso!'); return false;">
       <input type="text" placeholder="Seu nome" required />
-      <input type="email" placeholder="Seu e-mail" required />
-      <textarea rows="4" placeholder="Sua mensagem ou pedido de oração..." required></textarea>
-      <button type="submit" onclick="alert('Mensagem enviada!')">Enviar</button>
+      <input type="email" placeholder="Seu email" required />
+      <textarea placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar</button>
     </form>
-    <p>Você também pode nos encontrar no <a href="https://www.facebook.com/AssembleiaDeDeusMissionariaAntuerpia" target="_blank">Facebook</a></p>
   </section>
 
   <footer>
-    <p>&copy; 2025 Assembléia de Deus Missionária - Antuérpia</p>
+    &copy; 2025 Assembleia de Deus Missionária - Antuérpia
   </footer>
 
   <script>
-    const versiculos = [
-      "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito... – João 3:16",
-      "O Senhor é o meu pastor, nada me faltará. – Salmo 23:1",
-      "Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará. – Salmo 37:5",
-      "Buscai primeiro o Reino de Deus. – Mateus 6:33",
-      "Orai sem cessar. – 1 Tessalonicenses 5:17",
-      "O justo viverá pela fé. – Romanos 1:17",
-      "Clama a mim, e responder-te-ei. – Jeremias 33:3"
+    const verses = [
+      "O Senhor é o meu pastor; nada me faltará. – Salmo 23:1",
+      "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito. – João 3:16",
+      "Entrega o teu caminho ao Senhor; confia nele, e ele o fará. – Salmo 37:5",
+      "Buscai ao Senhor enquanto se pode achar. – Isaías 55:6"
     ];
-    const dia = new Date().getDay(); // 0 = domingo, 1 = segunda, etc.
-    document.getElementById("verso").innerText = versiculos[dia];
+    const verse = verses[Math.floor(Math.random() * verses.length)];
+    document.getElementById("verse").textContent = verse;
   </script>
-
 </body>
 </html>
