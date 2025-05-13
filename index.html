@@ -1,112 +1,184 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assembléia de Deus Missionária - Antuérpia</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #ffffff;
-            color: #000000;
-        }
-        header {
-            background-color: #0018F9;
-            color: white;
-            padding: 20px;
-            text-align: center;
-        }
-        nav {
-            background-color: #0018F9;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            padding: 10px 0;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        section {
-            padding: 20px;
-            max-width: 800px;
-            margin: auto;
-        }
-        footer {
-            background-color: #0018F9;
-            color: white;
-            text-align: center;
-            padding: 15px;
-        }
-        .donate {
-            background-color: #f0f0f0;
-            padding: 20px;
-            border-left: 5px solid #0018F9;
-            margin-top: 20px;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .gallery img {
-            width: 100%;
-            height: auto;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AD Missionária - Antuérpia</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    header {
+      background-color: #0018F9;
+      color: white;
+      padding: 1em 0;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #0010b5;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1em;
+      padding: 10px 0;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    section {
+      padding: 2em;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #0018F9;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1em;
+    }
+
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      border-radius: 8px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      font-size: 1em;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    button {
+      background-color: #0018F9;
+      color: white;
+      border: none;
+      padding: 10px;
+      font-size: 1em;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    footer {
+      background-color: #0018F9;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Assembléia de Deus Missionária - Antuérpia</h1>
-        <p id="verse">Versículo do dia: "Porque Deus amou o mundo de tal maneira..." - João 3:16</p>
-    </header>
 
-    <nav>
-        <a href="#sobre">Sobre</a>
-        <a href="#cultos">Cultos</a>
-        <a href="#doacoes">Doações</a>
-        <a href="#galeria">Fotos</a>
-    </nav>
+  <header>
+    <h1>Assembléia de Deus Missionária - Antuérpia</h1>
+    <p>Bredabaan 449, Merksem</p>
+    <p>Quinta-feira 19:30 | Domingo 9:00 (Escola Bíblica), 10:30 (Culto Principal)</p>
+  </header>
 
-    <section id="sobre">
-        <h2>Sobre Nós</h2>
-        <p>Bem-vindo à Assembléia de Deus Missionária em Antuérpia. Somos uma igreja dedicada a pregar o evangelho de Jesus Cristo e a servir à comunidade com amor, fé e compromisso com a Palavra de Deus.</p>
-        <p>Localização: Bredabaan 449, Merksem</p>
-    </section>
+  <nav>
+    <a href="#versiculo">Versículo</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#pastor">Pastor</a>
+    <a href="#cultos">Cultos</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#doacao">Doações</a>
+    <a href="#contato">Contato</a>
+  </nav>
 
-    <section id="cultos">
-        <h2>Horários de Culto</h2>
-        <ul>
-            <li>Quinta-feira: Culto às 19:30</li>
-            <li>Domingo: Escola Bíblica às 9:00</li>
-            <li>Domingo: Culto Principal às 10:30</li>
-        </ul>
-    </section>
+  <section id="versiculo">
+    <h2>Versículo do Dia</h2>
+    <p id="verso">Carregando...</p>
+  </section>
 
-    <section id="doacoes">
-        <h2>Doações</h2>
-        <div class="donate">
-            <p>Se você deseja apoiar nosso ministério e ajudar a expandir a obra de Deus, entre em contato conosco ou visite nossos cultos presenciais.</p>
-        </div>
-    </section>
+  <section id="sobre">
+    <h2>Sobre Nós</h2>
+    <p>Somos uma igreja pentecostal que busca a presença de Deus, prega a verdade da Bíblia e acolhe a todos que desejam conhecer a salvação em Cristo.</p>
+    <p>Nossa missão é: <strong>Ganhar almas, edificar vidas, e preparar discípulos para o Reino de Deus.</strong></p>
+  </section>
 
-    <section id="galeria">
-        <h2>Galeria de Fotos</h2>
-        <div class="gallery">
-            <!-- Exemplo de imagens - Substitua com suas fotos -->
-            <img src="https://via.placeholder.com/150" alt="Imagem 1">
-            <img src="https://via.placeholder.com/150" alt="Imagem 2">
-            <img src="https://via.placeholder.com/150" alt="Imagem 3">
-        </div>
-    </section>
+  <section id="pastor">
+    <h2>Mensagem do Pastor</h2>
+    <p>Querida igreja, que a paz do Senhor esteja com todos. Nossa missão não termina nos cultos, mas continua em cada casa, rua e coração que tocamos com o amor de Deus. Perseverem na fé e na comunhão. Estamos juntos nesta caminhada!</p>
+    <p><strong>Pr. João da Silva</strong></p>
+  </section>
 
-    <footer>
-        <p>Siga-nos no <a href="https://www.facebook.com/AssembleiaDeDeusMissionariaAntuerpia" style="color: white;" target="_blank">Facebook</a></p>
-        <p>&copy; 2025 Assembléia de Deus Missionária - Antuérpia</p>
-    </footer>
+  <section id="cultos">
+    <h2>Nossos Cultos</h2>
+    <ul>
+      <li><strong>Quinta-feira:</strong> Culto de ensino às 19:30</li>
+      <li><strong>Domingo:</strong> Escola Bíblica às 9:00</li>
+      <li><strong>Domingo:</strong> Culto de Celebração às 10:30</li>
+    </ul>
+  </section>
+
+  <section id="galeria" class="gallery">
+    <h2>Galeria</h2>
+    <img src="https://via.placeholder.com/300x200?text=Imagem+1" alt="Foto 1" />
+    <img src="https://via.placeholder.com/300x200?text=Imagem+2" alt="Foto 2" />
+    <img src="https://via.placeholder.com/300x200?text=Imagem+3" alt="Foto 3" />
+  </section>
+
+  <section id="doacao">
+    <h2>Doações</h2>
+    <p>Ajude-nos a continuar com a obra de Deus. Sua contribuição faz a diferença!</p>
+    <button onclick="alert('Link para doação em breve')">Contribuir Agora</button>
+  </section>
+
+  <section id="contato">
+    <h2>Contato & Pedidos de Oração</h2>
+    <form>
+      <input type="text" placeholder="Seu nome" required />
+      <input type="email" placeholder="Seu e-mail" required />
+      <textarea rows="4" placeholder="Sua mensagem ou pedido de oração..." required></textarea>
+      <button type="submit" onclick="alert('Mensagem enviada!')">Enviar</button>
+    </form>
+    <p>Você também pode nos encontrar no <a href="https://www.facebook.com/AssembleiaDeDeusMissionariaAntuerpia" target="_blank">Facebook</a></p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Assembléia de Deus Missionária - Antuérpia</p>
+  </footer>
+
+  <script>
+    const versiculos = [
+      "Porque Deus amou o mundo de tal maneira que deu o seu Filho unigênito... – João 3:16",
+      "O Senhor é o meu pastor, nada me faltará. – Salmo 23:1",
+      "Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará. – Salmo 37:5",
+      "Buscai primeiro o Reino de Deus. – Mateus 6:33",
+      "Orai sem cessar. – 1 Tessalonicenses 5:17",
+      "O justo viverá pela fé. – Romanos 1:17",
+      "Clama a mim, e responder-te-ei. – Jeremias 33:3"
+    ];
+    const dia = new Date().getDay(); // 0 = domingo, 1 = segunda, etc.
+    document.getElementById("verso").innerText = versiculos[dia];
+  </script>
+
 </body>
 </html>
