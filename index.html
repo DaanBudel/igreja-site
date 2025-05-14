@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Assembleia de Deus Missionária - Antuérpia</title>
-  <!-- Google Fonts -->
+  <!-- Google Fonts for modern typography -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
@@ -45,8 +45,15 @@
       color: #FF6F61;
       margin-top: 20px;
     }
-    header h1 {
-      color: white;
+    #verse-of-the-week {
+      font-size: 1.1em;
+      color: #ffffff;
+      margin-top: 15px;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 8px;
+      display: inline-block;
+      max-width: 600px;
     }
     nav {
       background-color: #0018F9;
@@ -122,6 +129,13 @@
       text-align: center;
       padding: 20px;
     }
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
     @media (max-width: 768px) {
       section {
         padding: 30px 15px;
@@ -136,13 +150,14 @@
     <img id="header-image" src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/308109550_174812785090674_3243926765759956750_n.png?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ZYIgv1QNljoQ7kNvwEW2YZv&_nc_oc=Adn_2UtzTCC7xRQbjbTg13aLGnAs3TMaJg5SnHn9ktbFQd9P1X0TGBlfqdHmut0TZoY&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=mRaiE9FjLkQSmWTwqaPcYA&oh=00_AfLjpfGpYCn9zbUKSGKOtzhb8beNRHPG070ZfdRc7kvQ3Q&oe=682981AE" alt="Assembleia de Deus Missionária">
     <h1>Assembleia de Deus Missionária - Antuérpia</h1>
     <div id="welcome-message">Jezus houdt van jou</div>
+    <div id="verse-of-the-week"></div>
   </header>
 
   <!-- Navigation Section -->
   <nav>
     <a href="#sobre">Sobre</a>
     <a href="#cultos">Cultos</a>
-    <a href="galeria.html">Galeria</a> <!-- ✅ Now links to separate page -->
+    <a href="#galeria">Galeria</a>
     <a href="#contato">Contato</a>
   </nav>
 
@@ -161,16 +176,18 @@
       <li><strong>Domingo:</strong> Culto principal às 10:30</li>
     </ul>
     <p><strong>Endereço:</strong> Bredabaan 449, Merksem</p>
-    <!-- ✅ Embedded Google Map -->
-    <iframe 
-      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.1265178534257!2d4.4484601!3d51.2414231!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3f75f55555555%3A0x0000000000000000!2sBredabaan%20449%2C%20Merksem!5e0!3m2!1spt-PT!2sbe!4v1715551234567" 
-      width="100%" 
-      height="350" 
-      style="border:0; border-radius: 12px; margin-top: 20px;" 
-      allowfullscreen="" 
-      loading="lazy" 
-      referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
+
+    <!-- Google Map Embed -->
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2518.7265262652036!2d4.463355015745101!3d51.24201597959283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3f71ec49c2853%3A0xd521173cda9e66fa!2sBredabaan%20449%2C%202170%20Antwerpen%2C%20Belgium!5e0!3m2!1sen!2sbe!4v1689532043260!5m2!1sen!2sbe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="galeria">
+    <h2>Galeria de Fotos</h2>
+    <div class="gallery">
+      <!-- Your existing gallery images -->
+      <!-- [Images not shown here for brevity] -->
+    </div>
   </section>
 
   <!-- Contact Section -->
@@ -189,6 +206,40 @@
   <footer>
     &copy; 2025 Assembleia de Deus Missionária - Antuérpia
   </footer>
+
+  <!-- Verse of the Week Script -->
+  <script>
+    const verses = [
+      "João 3:16 - Porque Deus amou o mundo de tal maneira...",
+      "Salmo 23:1 - O Senhor é o meu pastor, nada me faltará.",
+      "Filipenses 4:13 - Posso todas as coisas naquele que me fortalece.",
+      "Jeremias 29:11 - Eu é que sei que pensamentos tenho a vosso respeito...",
+      "Romanos 8:28 - Todas as coisas cooperam para o bem...",
+      "Provérbios 3:5-6 - Confia no Senhor de todo o teu coração...",
+      "Isaías 41:10 - Não temas, porque eu sou contigo...",
+      "Mateus 11:28 - Vinde a mim todos os que estais cansados...",
+      "1 Pedro 5:7 - Lançando sobre ele toda a vossa ansiedade...",
+      "Salmo 46:1 - Deus é o nosso refúgio e fortaleza...",
+      "Romanos 12:2 - Não vos conformeis com este mundo...",
+      "Salmo 91:1 - Aquele que habita no esconderijo do Altíssimo...",
+      "Efésios 2:8 - Pela graça sois salvos, mediante a fé...",
+      "Hebreus 11:1 - A fé é o firme fundamento...",
+      "Mateus 6:33 - Buscai primeiro o reino de Deus...",
+      "Tiago 1:5 - Se algum de vós tem falta de sabedoria...",
+      "1 Coríntios 13:4 - O amor é paciente, o amor é bondoso...",
+      "Salmo 119:105 - Lâmpada para os meus pés é a tua palavra...",
+      "Gálatas 5:22 - Mas o fruto do Espírito é amor, alegria, paz...",
+      "2 Timóteo 1:7 - Deus não nos deu espírito de medo...",
+      "Colossenses 3:23 - Tudo quanto fizerdes, fazei-o de coração...",
+      "João 14:6 - Eu sou o caminho, a verdade e a vida...",
+      "Romanos 10:9 - Se com a tua boca confessares...",
+      "Salmo 37:5 - Entrega o teu caminho ao Senhor...",
+      "Isaías 40:31 - Mas os que esperam no Senhor renovarão as forças..."
+    ];
+    const now = new Date();
+    const week = Math.floor((now - new Date(now.getFullYear(), 0, 1)) / (7 * 24 * 60 * 60 * 1000));
+    document.getElementById("verse-of-the-week").textContent = "Verso da Semana: " + verses[week % verses.length];
+  </script>
 
 </body>
 </html>
