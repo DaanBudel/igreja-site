@@ -4,11 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Assembleia de Deus Missionária - Antuérpia</title>
-  <!-- Google Fonts for modern typography -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-
   <style>
-    /* Global Styles */
     body {
       font-family: 'Poppins', sans-serif;
       color: #333;
@@ -24,8 +21,6 @@
       font-family: 'Lato', sans-serif;
       color: #333;
     }
-
-    /* Header Styles */
     header {
       padding: 40px 20px;
       text-align: center;
@@ -45,14 +40,12 @@
     #welcome-message {
       font-size: 2.2em;
       font-weight: 600;
-      color: #FF6F61;  /* Soft coral color */
+      color: #FF6F61;
       margin-top: 20px;
     }
     header h1 {
-      color: white; /* Updated for better visibility */
+      color: white;
     }
-
-    /* Navigation Styles */
     nav {
       background-color: #0018F9;
       text-align: center;
@@ -71,8 +64,6 @@
     nav a:hover {
       color: #FF6F61;
     }
-
-    /* Section Styles */
     section {
       padding: 40px 20px;
       max-width: 900px;
@@ -81,15 +72,12 @@
       border-radius: 12px;
       box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
     }
-
     section h2 {
       font-size: 2em;
       font-weight: 600;
       color: #333;
       margin-bottom: 20px;
     }
-
-    /* Gallery Styles */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -104,8 +92,6 @@
     .gallery img:hover {
       transform: scale(1.05);
     }
-
-    /* Form Styles */
     form input, form textarea {
       width: 100%;
       padding: 12px;
@@ -128,16 +114,19 @@
     form button:hover {
       background-color: #FF6F61;
     }
-
-    /* Footer Styles */
     footer {
       background-color: #0018F9;
       color: white;
       text-align: center;
       padding: 20px;
     }
-
-    /* Mobile Responsive */
+    iframe.map {
+      width: 100%;
+      height: 400px;
+      border: none;
+      border-radius: 12px;
+      margin-top: 20px;
+    }
     @media (max-width: 768px) {
       section {
         padding: 30px 15px;
@@ -147,28 +136,24 @@
 </head>
 <body>
 
-  <!-- Header Section -->
   <header>
     <img id="header-image" src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/308109550_174812785090674_3243926765759956750_n.png?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=ZYIgv1QNljoQ7kNvwEW2YZv&_nc_oc=Adn_2UtzTCC7xRQbjbTg13aLGnAs3TMaJg5SnHn9ktbFQd9P1X0TGBlfqdHmut0TZoY&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=mRaiE9FjLkQSmWTwqaPcYA&oh=00_AfLjpfGpYCn9zbUKSGKOtzhb8beNRHPG070ZfdRc7kvQ3Q&oe=682981AE" alt="Assembleia de Deus Missionária">
     <h1>Assembleia de Deus Missionária - Antuérpia</h1>
     <div id="welcome-message">Jezus houdt van jou</div>
   </header>
 
-  <!-- Navigation Section -->
   <nav>
     <a href="#sobre">Sobre</a>
     <a href="#cultos">Cultos</a>
-    <a href="#galeria">Galeria</a>
+    <a href="galeria.html">Galeria</a>
     <a href="#contato">Contato</a>
   </nav>
 
-  <!-- About Section -->
   <section id="sobre">
     <h2>Sobre Nós</h2>
     <p>Somos uma comunidade cristã comprometida com a missão de pregar o evangelho em Antuérpia e além. Venha adorar conosco!</p>
   </section>
 
-  <!-- Service Times Section -->
   <section id="cultos">
     <h2>Horários de Culto</h2>
     <ul>
@@ -177,22 +162,14 @@
       <li><strong>Domingo:</strong> Culto principal às 10:30</li>
     </ul>
     <p><strong>Endereço:</strong> Bredabaan 449, Merksem</p>
+    <iframe class="map" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2436.3211944154846!2d4.453093476826936!3d51.24305593237927!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c3f6fc98b0d799%3A0x13bff6bbbcfcfb7e!2sBredabaan%20449%2C%202170%20Antwerpen!5e0!3m2!1spt-BR!2sbe!4v1715619305895!5m2!1spt-BR!2sbe" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </section>
 
-  <!-- Gallery Section -->
   <section id="galeria">
     <h2>Galeria de Fotos</h2>
-    <div class="gallery">
-      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/496009375_703161348922479_3779275765100542713_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_ohc=NWmJN59Gua0Q7kNvwHoNUb5&_nc_oc=AdnCJyasyjm8yXS7r3N2J5Ym155Zu-L6A0RcILr_K1Ect-ImVsZXoHM9rf5Oj2bH09w&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=U7vzeQUzRNk8xXylZ047fw&oh=00_AfLUEEfBhxSP1GOuSPIhHosRQAnXGyYkBJUU8sRE_QZRbA&oe=6829822A" alt="Foto 1" />
-      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t51.75761-15/495386312_17984263646811593_7367884006710620620_n.jpg?_nc_cat=102&ccb=1-7&_nc_ohc=8hDB-Il-DzUQ7kNvwHRwbxp&_nc_oc=Admig3Y7JkxbccTBINFROnqui2PNX6-UhWCcme9FP_EbLxVXwvyT2TCoI37tJrUpM8I&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=FpUptlsBiSnE7q7faKnUWw&oh=00_AfIz9-5JO8P6yIx9DLIj3Q8Ts1r45zaubMIAo0Peofjs8Q&oe=68297201" alt="Foto 2" />
-      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t51.75761-15/495446213_17984263793811593_777410081406032390_n.jpg?stp=dst-jpegr_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=vWYi5ucTt9oQ7kNvwGBaruP&_nc_oc=Adkbr8glUkvRPAidsMBb0arAV5N3gVOI6OPvfLnG_Kzj3YIpOz5xGcR-5A9GfVEuXIU&_nc_zt=23&se=-1&_nc_ht=scontent-bru2-1.xx&_nc_gid=5A4IvmpoSpuUWz3Jb3e59g&oh=00_AfLfP-1RfB-cZ06p140jdm_Q4kI8y-Jts3oEZ-PNE6ne2A&oe=682954DD" alt="Foto 3" />
-      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t51.75761-15/495581210_17984263754811593_2982219367707782298_n.jpg?stp=dst-jpegr_tt6&_nc_cat=108&ccb=1-7&_nc_sid=127cfc&_nc_ohc=XPLoraFmHXsQ7kNvwGhiTm6&_nc_oc=AdkMIPy7TVEXQmOw9pB7EZG-FEOwnl0EDUy8vpyqOvo1DvcqxzU0phyT912WgBYVBWM&_nc_zt=23&se=-1&_nc_ht=scontent-bru2-1.xx&_nc_gid=mhAAx8c6pG9zd1SmtzNg4A&oh=00_AfIFrOmi1Wo9wWj_nGrbIv3Zbdd4izILOtkD-hKwKL7vMQ&oe=68296CB3" alt="Foto 4" />
-      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t51.75761-15/488028556_17980740203811593_3126016807665467866_n.jpg?stp=dst-jpegr_tt6&_nc_cat=103&ccb=1-7&_nc_sid=127cfc&_nc_ohc=kJRfk3mpwC8Q7kNvwEXH-Ya&_nc_oc=Adlt1Ll_YU6Pqkr1yWfJrwnpaHcl5SEmxukDoR0fx-CEs_zENwmwsdZH8-1WmI6NZ14&_nc_zt=23&se=-1&_nc_ht=scontent-bru2-1.xx&_nc_gid=VbQMsIYzTjEwB4QhBSpmPQ&oh=00_AfJT6aa7HKtBlhcz-fvpIwvzfSZPIBF5Zb84E6nPJ-dQgw&oe=68297923" alt="Foto 5" />
-      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t51.75761-15/487210086_17980202033811593_3617669021485504724_n.jpg?_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=bN3lF84t5kwQ7kNvwF-0B8-&_nc_oc=AdnSkARCgrBAp09w8yIK_oZIEVxe42mNboIP5BEAs3EsySMqWfQUdvTT-rzoE5t7tkM&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=URbFKY1pqdxe5rBXQXdvwQ&oh=00_AfK7XK-ZEU6TndEnln1tZK81PRCkI0a0xH3BYYXdp_Zo6w&oe=682970B4" alt="Foto 6" />
-    </div>
+    <p>Veja mais em nossa <a href="galeria.html">página de galeria</a>.</p>
   </section>
 
-  <!-- Contact Section -->
   <section id="contato">
     <h2>Contato</h2>
     <p>Facebook: <a href="https://www.facebook.com/AssembleiaDeDeusMissionariaAntuerpia" target="_blank">Clique aqui</a></p>
@@ -204,7 +181,6 @@
     </form>
   </section>
 
-  <!-- Footer Section -->
   <footer>
     &copy; 2025 Assembleia de Deus Missionária - Antuérpia
   </footer>
