@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dove Light Ministries</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Lato:wght@700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Assembleia de Deus Missionária - Antuérpia</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       color: #333;
@@ -25,7 +30,7 @@
     }
 
     header {
-      padding: 30px 15px;
+      padding: 40px 20px;
       text-align: center;
       color: white;
       background: rgba(0, 0, 0, 0.5);
@@ -33,21 +38,20 @@
     }
 
     header img {
-      width: 100%;
-      max-width: 200px;
-      height: auto;
+      height: 100px;
       margin-bottom: 10px;
+      max-width: 90%;
     }
 
     #welcome-message {
-      font-size: 1.8em;
+      font-size: 2em;
       font-weight: 600;
       color: #FF6F61;
-      margin-top: 20px;
+      margin-top: 15px;
     }
 
     #verse-of-the-week {
-      font-size: 1.1em;
+      font-size: 1em;
       margin-top: 15px;
       color: #fff;
       font-style: italic;
@@ -61,7 +65,7 @@
     nav {
       background-color: #0018F9;
       text-align: center;
-      padding: 15px 10px;
+      padding: 15px;
       position: sticky;
       top: 0;
       z-index: 100;
@@ -69,12 +73,11 @@
 
     nav a {
       color: white;
-      margin: 8px 10px;
-      display: inline-block;
-      font-weight: 600;
+      margin: 0 15px;
       text-decoration: none;
+      font-weight: 600;
       font-size: 1em;
-      transition: color 0.3s ease;
+      display: inline-block;
     }
 
     nav a:hover {
@@ -83,7 +86,7 @@
 
     section {
       padding: 40px 20px;
-      max-width: 900px;
+      max-width: 1000px;
       margin: 40px auto;
       background-color: rgba(255, 255, 255, 0.85);
       border-radius: 12px;
@@ -91,13 +94,19 @@
     }
 
     section h2 {
-      font-size: 1.8em;
+      font-size: 2em;
+      font-weight: 600;
+      color: #333;
       margin-bottom: 20px;
+    }
+
+    ul {
+      padding-left: 20px;
     }
 
     .gallery {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 20px;
     }
 
@@ -119,7 +128,6 @@
       border: 1px solid #ddd;
       border-radius: 8px;
       font-size: 1em;
-      box-sizing: border-box;
     }
 
     form button {
@@ -129,7 +137,7 @@
       border: none;
       border-radius: 8px;
       cursor: pointer;
-      font-size: 1.2em;
+      font-size: 1.1em;
       transition: background-color 0.3s ease;
     }
 
@@ -145,14 +153,25 @@
       font-size: 0.9em;
     }
 
-    /* 📱 Mobile Improvements */
-    @media (max-width: 600px) {
-      header {
-        padding: 20px 10px;
+    iframe {
+      width: 100%;
+      border: 0;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    a {
+      word-break: break-word;
+    }
+
+    @media (max-width: 768px) {
+      header img {
+        height: auto;
+        max-width: 80%;
       }
 
       #welcome-message {
-        font-size: 1.4em;
+        font-size: 1.5em;
       }
 
       nav {
@@ -161,83 +180,123 @@
 
       nav a {
         display: block;
-        margin: 8px 0;
+        margin: 10px 0;
         font-size: 1em;
       }
 
       section {
-        padding: 20px 10px;
+        padding: 25px 15px;
         margin: 20px 10px;
       }
 
       .gallery {
         grid-template-columns: 1fr;
       }
-
-      form button {
-        width: 100%;
-        padding: 12px;
-      }
-
-      iframe {
-        height: 250px;
-      }
     }
   </style>
 </head>
-
 <body>
+
+  <!-- Header -->
   <header>
-    <img src="https://i.imgur.com/MkFvsKs.png" alt="Dove Light Ministries Logo" id="header-image" />
-    <h1>Dove Light Ministries</h1>
-    <div id="welcome-message">Welcome to a Place of Light, Love & Hope</div>
-    <div id="verse-of-the-week">"You are the light of the world. A city set on a hill cannot be hidden." — Matthew 5:14</div>
+    <img src="https://i.imgur.com/MkFvsKs.png" alt="Assembleia de Deus Missionária">
+    <h1>Assembleia de Deus Missionária - Antuérpia</h1>
+    <div id="welcome-message">Jezus houdt van jou</div>
+    <div id="verse-of-the-week"></div>
   </header>
 
+  <!-- Navigation -->
   <nav>
-    <a href="#about">About</a>
-    <a href="#events">Events</a>
-    <a href="#gallery">Gallery</a>
-    <a href="#contact">Contact</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#cultos">Cultos</a>
+    <a href="#galeria">Galeria</a>
+    <a href="#contato">Contato</a>
   </nav>
 
-  <section id="about">
-    <h2>About Us</h2>
-    <p>
-      Dove Light Ministries is a spirit-filled community that believes in sharing the message of Jesus Christ through worship, fellowship, and outreach. Our mission is to shine the light of God’s love in every heart and home.
-    </p>
+  <!-- About -->
+  <section id="sobre">
+    <h2>Sobre Nós</h2>
+    <p>Somos uma comunidade cristã comprometida com a missão de pregar o evangelho em Antuérpia e além. Venha adorar conosco!</p>
   </section>
 
-  <section id="events">
-    <h2>Upcoming Events</h2>
+  <!-- Services -->
+  <section id="cultos">
+    <h2>Horários de Culto</h2>
     <ul>
-      <li><strong>Sunday Worship:</strong> Every Sunday at 10:00 AM</li>
-      <li><strong>Prayer Meeting:</strong> Wednesdays at 7:00 PM</li>
-      <li><strong>Community Outreach:</strong> First Saturday of every month</li>
+      <li><strong>Quinta-feira:</strong> Culto às 19:30</li>
+      <li><strong>Domingo:</strong> Escola Bíblica às 09:00</li>
+      <li><strong>Domingo:</strong> Culto principal às 10:30</li>
     </ul>
+    <p><strong>Endereço:</strong> Bredabaan 449, Merksem</p>
+    <iframe 
+      src="https://www.google.com/maps?q=Bredabaan+449,+Merksem&output=embed" 
+      height="300" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
   </section>
 
-  <section id="gallery">
-    <h2>Gallery</h2>
+  <!-- Gallery -->
+  <section id="galeria">
+    <h2>Galeria de Fotos</h2>
     <div class="gallery">
-      <img src="https://source.unsplash.com/400x300/?church,people" alt="Gallery 1">
-      <img src="https://source.unsplash.com/400x300/?worship,church" alt="Gallery 2">
-      <img src="https://source.unsplash.com/400x300/?community,faith" alt="Gallery 3">
+      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/496009375_703161348922479_3779275765100542713_n.jpg?...jpg" alt="Foto 1" />
+      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t51.75761-15/495386312_17984263646811593_7367884006710620620_n.jpg?...jpg" alt="Foto 2" />
+      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t51.75761-15/495446213_17984263793811593_777410081406032390_n.jpg?...jpg" alt="Foto 3" />
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact Us</h2>
-    <form>
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
-      <button type="submit">Send Message</button>
+  <!-- Contact -->
+  <section id="contato">
+    <h2>Contato</h2>
+    <p>Facebook: <a href="https://www.facebook.com/AssembleiaDeDeusMissionariaAntuerpia" target="_blank">Clique aqui</a></p>
+    <form onsubmit="alert('Mensagem enviada com sucesso!'); return false;">
+      <input type="text" placeholder="Seu nome" required />
+      <input type="email" placeholder="Seu email" required />
+      <textarea placeholder="Sua mensagem" required></textarea>
+      <button type="submit">Enviar</button>
     </form>
   </section>
 
+  <!-- Footer -->
   <footer>
-    <p>&copy; 2025 Dove Light Ministries. All rights reserved.</p>
+    &copy; 2025 Assembleia de Deus Missionária - Antuérpia
   </footer>
+
+  <!-- Verse of the Week Script -->
+  <script>
+    const verses = [
+      "João 3:16 – Porque Deus amou o mundo de tal maneira...",
+      "Romanos 8:1 – Agora, pois, nenhuma condenação há para os que estão em Cristo Jesus.",
+      "Filipenses 4:13 – Posso todas as coisas naquele que me fortalece.",
+      "Mateus 5:14 – Vós sois a luz do mundo.",
+      "2 Coríntios 5:17 – Se alguém está em Cristo, nova criatura é.",
+      "1 João 4:8 – Deus é amor.",
+      "Romanos 5:8 – Mas Deus prova o seu amor para conosco...",
+      "Hebreus 13:8 – Jesus Cristo é o mesmo ontem, hoje e eternamente.",
+      "João 14:6 – Eu sou o caminho, e a verdade e a vida...",
+      "Tiago 1:5 – Se algum de vós tem falta de sabedoria, peça-a a Deus...",
+      "Atos 16:31 – Crê no Senhor Jesus Cristo e serás salvo.",
+      "Mateus 11:28 – Vinde a mim, todos os que estais cansados...",
+      "Gálatas 2:20 – Já estou crucificado com Cristo...",
+      "Romanos 10:9 – Se com a tua boca confessares o Senhor Jesus...",
+      "João 8:32 – E conhecereis a verdade, e a verdade vos libertará.",
+      "Efésios 2:8 – Pela graça sois salvos, por meio da fé.",
+      "Hebreus 11:1 – A fé é o firme fundamento das coisas que se esperam...",
+      "Colossenses 3:23 – Tudo quanto fizerdes, fazei-o de coração...",
+      "1 Coríntios 13:13 – Agora, pois, permanecem a fé, a esperança e o amor...",
+      "Romanos 12:2 – Não vos conformeis com este mundo...",
+    ];
+
+    Date.prototype.getWeekNumber = function () {
+      const d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
+      const dayNum = d.getUTCDay() || 7;
+      d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+      const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+      return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+    };
+
+    const currentWeek = new Date().getWeekNumber();
+    const verse = verses[currentWeek % verses.length];
+    document.getElementById("verse-of-the-week").textContent = `Versículo da Semana: ${verse}`;
+  </script>
 </body>
 </html>
