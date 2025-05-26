@@ -272,7 +272,7 @@
 
     const currentWeek = new Date().getWeekNumber();
     const verse = verses[currentWeek % verses.length];
-    document.getElementById("verse-of-the-week").textContent = Versículo da Semana: ${verse};
+    document.getElementById("verse-of-the-week").textContent = `Versículo da Semana: ${verse}`;
 
     // Add getWeekNumber function
     Date.prototype.getWeekNumber = function () {
