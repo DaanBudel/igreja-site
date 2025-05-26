@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Assembleia de Deus Missionária - Antuérpia</title>
-  <!-- Google Fonts for modern typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dove Light Ministries</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Lato:wght@700&display=swap" rel="stylesheet">
 
   <style>
     body {
@@ -19,35 +18,36 @@
       background-attachment: fixed;
       background-repeat: no-repeat;
     }
+
     h1, h2, h3 {
       font-family: 'Lato', sans-serif;
       color: #333;
     }
 
     header {
-      padding: 40px 20px;
+      padding: 30px 15px;
       text-align: center;
       color: white;
       background: rgba(0, 0, 0, 0.5);
       border-bottom: 2px solid rgba(255, 255, 255, 0.3);
     }
+
     header img {
-      height: 120px;
+      width: 100%;
+      max-width: 200px;
+      height: auto;
       margin-bottom: 10px;
     }
-    #header-image {
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 20px;
-    }
+
     #welcome-message {
-      font-size: 2.2em;
+      font-size: 1.8em;
       font-weight: 600;
       color: #FF6F61;
       margin-top: 20px;
     }
+
     #verse-of-the-week {
-      font-size: 1.2em;
+      font-size: 1.1em;
       margin-top: 15px;
       color: #fff;
       font-style: italic;
@@ -55,27 +55,28 @@
       padding: 10px;
       border-radius: 8px;
       display: inline-block;
-      max-width: 700px;
-    }
-    header h1 {
-      color: white;
+      max-width: 90%;
     }
 
     nav {
       background-color: #0018F9;
       text-align: center;
-      padding: 15px;
+      padding: 15px 10px;
       position: sticky;
       top: 0;
       z-index: 100;
     }
+
     nav a {
       color: white;
-      margin: 0 20px;
-      text-decoration: none;
+      margin: 8px 10px;
+      display: inline-block;
       font-weight: 600;
+      text-decoration: none;
+      font-size: 1em;
       transition: color 0.3s ease;
     }
+
     nav a:hover {
       color: #FF6F61;
     }
@@ -90,9 +91,7 @@
     }
 
     section h2 {
-      font-size: 2em;
-      font-weight: 600;
-      color: #333;
+      font-size: 1.8em;
       margin-bottom: 20px;
     }
 
@@ -101,12 +100,14 @@
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
     }
+
     .gallery img {
-      max-width: 100%;
+      width: 100%;
       height: auto;
       border-radius: 12px;
       transition: transform 0.3s ease;
     }
+
     .gallery img:hover {
       transform: scale(1.05);
     }
@@ -120,6 +121,7 @@
       font-size: 1em;
       box-sizing: border-box;
     }
+
     form button {
       background-color: #0018F9;
       color: white;
@@ -130,6 +132,7 @@
       font-size: 1.2em;
       transition: background-color 0.3s ease;
     }
+
     form button:hover {
       background-color: #FF6F61;
     }
@@ -139,149 +142,102 @@
       color: white;
       text-align: center;
       padding: 20px;
+      font-size: 0.9em;
     }
 
-    @media (max-width: 768px) {
+    /* 📱 Mobile Improvements */
+    @media (max-width: 600px) {
+      header {
+        padding: 20px 10px;
+      }
+
+      #welcome-message {
+        font-size: 1.4em;
+      }
+
+      nav {
+        padding: 10px;
+      }
+
+      nav a {
+        display: block;
+        margin: 8px 0;
+        font-size: 1em;
+      }
+
       section {
-        padding: 30px 15px;
+        padding: 20px 10px;
+        margin: 20px 10px;
+      }
+
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      form button {
+        width: 100%;
+        padding: 12px;
+      }
+
+      iframe {
+        height: 250px;
       }
     }
   </style>
 </head>
-<body>
 
-  <!-- Header Section -->
+<body>
   <header>
-    <img id="header-image" src="https://i.imgur.com/MkFvsKs.png" alt="Assembleia de Deus Missionária">
-    <h1>Assembleia de Deus Missionária - Antuérpia</h1>
-    <div id="welcome-message">Jezus houdt van jou</div>
-    <div id="verse-of-the-week"></div>
+    <img src="https://i.imgur.com/MkFvsKs.png" alt="Dove Light Ministries Logo" id="header-image" />
+    <h1>Dove Light Ministries</h1>
+    <div id="welcome-message">Welcome to a Place of Light, Love & Hope</div>
+    <div id="verse-of-the-week">"You are the light of the world. A city set on a hill cannot be hidden." — Matthew 5:14</div>
   </header>
 
-  <!-- Navigation -->
   <nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#cultos">Cultos</a>
-    <a href="#galeria">Galeria</a>
-    <a href="#contato">Contato</a>
+    <a href="#about">About</a>
+    <a href="#events">Events</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
   </nav>
 
-  <!-- About -->
-  <section id="sobre">
-    <h2>Sobre Nós</h2>
-    <p>Somos uma comunidade cristã comprometida com a missão de pregar o evangelho em Antuérpia e além. Venha adorar conosco!</p>
+  <section id="about">
+    <h2>About Us</h2>
+    <p>
+      Dove Light Ministries is a spirit-filled community that believes in sharing the message of Jesus Christ through worship, fellowship, and outreach. Our mission is to shine the light of God’s love in every heart and home.
+    </p>
   </section>
 
-  <!-- Services -->
-  <section id="cultos">
-    <h2>Horários de Culto</h2>
+  <section id="events">
+    <h2>Upcoming Events</h2>
     <ul>
-      <li><strong>Quinta-feira:</strong> Culto às 19:30</li>
-      <li><strong>Domingo:</strong> Escola Bíblica às 09:00</li>
-      <li><strong>Domingo:</strong> Culto principal às 10:30</li>
+      <li><strong>Sunday Worship:</strong> Every Sunday at 10:00 AM</li>
+      <li><strong>Prayer Meeting:</strong> Wednesdays at 7:00 PM</li>
+      <li><strong>Community Outreach:</strong> First Saturday of every month</li>
     </ul>
-    <p><strong>Endereço:</strong> Bredabaan 449, Merksem</p>
-    <iframe 
-      src="https://www.google.com/maps?q=Bredabaan+449,+Merksem&output=embed" 
-      width="100%" height="300" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
   </section>
 
-  <!-- Gallery -->
-  <section id="galeria">
-    <h2>Galeria de Fotos</h2>
+  <section id="gallery">
+    <h2>Gallery</h2>
     <div class="gallery">
-      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/496009375_703161348922479_3779275765100542713_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=f727a1&_nc_ohc=NWmJN59Gua0Q7kNvwHoNUb5&_nc_oc=AdnCJyasyjm8yXS7r3N2J5Ym155Zu-L6A0RcILr_K1Ect-ImVsZXoHM9rf5Oj2bH09w&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=U7vzeQUzRNk8xXylZ047fw&oh=00_AfLUEEfBhxSP1GOuSPIhHosRQAnXGyYkBJUU8sRE_QZRbA&oe=6829822A" alt="Foto 1" />
-      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t51.75761-15/495386312_17984263646811593_7367884006710620620_n.jpg?_nc_cat=102&ccb=1-7&_nc_ohc=8hDB-Il-DzUQ7kNvwHRwbxp&_nc_oc=Admig3Y7JkxbccTBINFROnqui2PNX6-UhWCcme9FP_EbLxVXwvyT2TCoI37tJrUpM8I&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=FpUptlsBiSnE7q7faKnUWw&oh=00_AfIz9-5JO8P6yIx9DLIj3Q8Ts1r45zaubMIAo0Peofjs8Q&oe=68297201" alt="Foto 2" />
-      <img src="https://scontent-bru2-1.xx.fbcdn.net/v/t51.75761-15/495446213_17984263793811593_777410081406032390_n.jpg?stp=dst-jpegr_tt6&_nc_cat=110&ccb=1-7&_nc_sid=127cfc&_nc_ohc=vWYi5ucTt9oQ7kNvwGBaruP&_nc_oc=Adkbr8glUkvRPAidsMBb0arAV5N3gVOI6OPvfLnG_Kzj3YIpOz5xGcR-5A9GfVEuXIU&_nc_zt=23&se=-1&_nc_ht=scontent-bru2-1.xx&_nc_gid=5A4IvmpoSpuUWz3Jb3e59g&oh=00_AfLfP-1RfB-cZ06p140jdm_Q4kI8y-Jts3oEZ-PNE6ne2A&oe=682954DD" alt="Foto 3" />
+      <img src="https://source.unsplash.com/400x300/?church,people" alt="Gallery 1">
+      <img src="https://source.unsplash.com/400x300/?worship,church" alt="Gallery 2">
+      <img src="https://source.unsplash.com/400x300/?community,faith" alt="Gallery 3">
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contato">
-    <h2>Contato</h2>
-    <p>Facebook: <a href="https://www.facebook.com/AssembleiaDeDeusMissionariaAntuerpia" target="_blank">Clique aqui</a></p>
-    <form onsubmit="alert('Mensagem enviada com sucesso!'); return false;">
-      <input type="text" placeholder="Seu nome" required />
-      <input type="email" placeholder="Seu email" required />
-      <textarea placeholder="Sua mensagem" required></textarea>
-      <button type="submit">Enviar</button>
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+      <button type="submit">Send Message</button>
     </form>
   </section>
 
-  <!-- Footer -->
   <footer>
-    &copy; 2025 Assembleia de Deus Missionária - Antuérpia
+    <p>&copy; 2025 Dove Light Ministries. All rights reserved.</p>
   </footer>
-
-  <!-- Verse of the Week Script -->
-  <script>
-    const verses = [
-      "João 3:16 – Porque Deus amou o mundo de tal maneira...",
-      "Romanos 8:1 – Agora, pois, nenhuma condenação há para os que estão em Cristo Jesus.",
-      "Filipenses 4:13 – Posso todas as coisas naquele que me fortalece.",
-      "Mateus 5:14 – Vós sois a luz do mundo.",
-      "2 Coríntios 5:17 – Se alguém está em Cristo, nova criatura é.",
-      "1 João 4:8 – Deus é amor.",
-      "Romanos 5:8 – Mas Deus prova o seu amor para conosco...",
-      "Hebreus 13:8 – Jesus Cristo é o mesmo ontem, hoje e eternamente.",
-      "João 14:6 – Eu sou o caminho, e a verdade e a vida...",
-      "Tiago 1:5 – Se algum de vós tem falta de sabedoria, peça-a a Deus...",
-      "Atos 16:31 – Crê no Senhor Jesus Cristo e serás salvo.",
-      "Mateus 11:28 – Vinde a mim, todos os que estais cansados...",
-      "Gálatas 2:20 – Já estou crucificado com Cristo...",
-      "Romanos 10:9 – Se com a tua boca confessares o Senhor Jesus...",
-      "João 8:32 – E conhecereis a verdade, e a verdade vos libertará.",
-      "1 Coríntios 10:13 – Deus é fiel e não permitirá que sejais tentados além do que podeis...",
-      "Efésios 2:8 – Pela graça sois salvos, por meio da fé.",
-      "Hebreus 11:1 – A fé é o firme fundamento das coisas que se esperam...",
-      "Colossenses 3:23 – Tudo quanto fizerdes, fazei-o de coração...",
-      "1 Coríntios 13:13 – Agora, pois, permanecem a fé, a esperança e o amor...",
-      "Romanos 12:2 – Não vos conformeis com este mundo...",
-      "João 1:12 – Mas, a todos quantos o receberam, deu-lhes o poder de serem feitos filhos de Deus.",
-      "Tiago 4:7 – Sujeitai-vos, pois, a Deus; resisti ao diabo...",
-      "1 Pedro 5:7 – Lançando sobre ele toda a vossa ansiedade...",
-      "Mateus 28:19 – Ide, fazei discípulos de todas as nações...",
-      "Lucas 6:31 – Como vós quereis que os homens vos façam...",
-      "João 15:5 – Sem mim nada podeis fazer.",
-      "Efésios 6:11 – Revesti-vos de toda a armadura de Deus...",
-      "2 Timóteo 3:16 – Toda a Escritura é divinamente inspirada...",
-      "Gálatas 5:22 – Mas o fruto do Espírito é amor, alegria, paz...",
-      "Mateus 6:33 – Buscai primeiro o Reino de Deus...",
-      "1 João 1:9 – Se confessarmos os nossos pecados...",
-      "Atos 1:8 – Mas recebereis poder, ao descer sobre vós o Espírito Santo...",
-      "Romanos 6:23 – O salário do pecado é a morte...",
-      "João 16:33 – No mundo tereis aflições, mas tende bom ânimo...",
-      "Hebreus 4:12 – A palavra de Deus é viva e eficaz...",
-      "Marcos 11:24 – Tudo o que pedirdes em oração, crede que o recebereis...",
-      "1 Tessalonicenses 5:16 – Regozijai-vos sempre.",
-      "2 Coríntios 12:9 – A minha graça te basta...",
-      "João 11:25 – Eu sou a ressurreição e a vida...",
-      "Mateus 7:7 – Pedi, e dar-se-vos-á...",
-      "Filipenses 4:6 – Não andeis ansiosos por coisa alguma...",
-      "João 6:35 – Eu sou o pão da vida...",
-      "Romanos 15:13 – O Deus da esperança vos encha de todo gozo...",
-      "1 Timóteo 6:12 – Combate o bom combate da fé...",
-      "Mateus 18:20 – Onde estiverem dois ou três reunidos em meu nome...",
-      "Tiago 1:12 – Bem-aventurado o homem que suporta a tentação...",
-      "Efésios 4:32 – Sede uns para com os outros benignos...",
-      "1 Pedro 2:9 – Vós sois geração eleita, sacerdócio real...",
-      "Apocalipse 3:20 – Eis que estou à porta e bato...",
-    ];
-
-    const currentWeek = new Date().getWeekNumber();
-    const verse = verses[currentWeek % verses.length];
-    document.getElementById("verse-of-the-week").textContent = `Versículo da Semana: ${verse}`;
-
-    // Add getWeekNumber function
-    Date.prototype.getWeekNumber = function () {
-      const d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
-      const dayNum = d.getUTCDay() || 7;
-      d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-      const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-      return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
-    };
-  </script>
-
 </body>
 </html>
