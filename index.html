@@ -1,306 +1,232 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Assembleia de Deus Missionária - Antuérpia</title>
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terra do Café – Artisan Single Origins</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    * {
-      box-sizing: border-box;
+    :root {
+      --green-dark: #2f4f2f;
+      --green-light: #8fae94;
+      --beige: #f8f5ec;
+      --beige-dark: #eae2d4;
+      --white: #ffffff;
+      --gold: #bfa36f;
+      --font-head: 'Playfair Display', serif;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --transition: 0.4s ease;
     }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Poppins', sans-serif;
-      color: #333;
-      margin: 0;
-      padding: 0;
-      background-image: url('https://wallpapers.com/images/high/dove-2507-x-1605-background-r182p1j0nk2j3wrs.webp');
-      background-size: cover;
-      background-position: center center;
-      background-attachment: fixed;
-      background-repeat: no-repeat;
+      background: var(--beige);
+      font-family: var(--font-body);
+      color: var(--green-dark);
+      line-height: 1.6;
     }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: 90%; max-width: 1200px; margin: 0 auto; }
 
-    h1, h2, h3 {
-      font-family: 'Lato', sans-serif;
-      color: #333;
-    }
-
+    /* Header */
     header {
-      padding: 40px 20px;
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      background: rgba(248,245,236,0.9);
+      backdrop-filter: blur(5px);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+    nav { display: flex; align-items: center; justify-content: space-between; padding: 1rem; }
+    .logo { height: 60px; transition: transform var(--transition); }
+    .logo:hover { transform: scale(1.05); }
+    .nav-list { list-style: none; display: flex; gap: 2.5rem; font-weight: 500; }
+    .nav-list a { position: relative; padding: .2rem 0; transition: color var(--transition); }
+    .nav-list a::after {
+      content: '';
+      position: absolute; bottom: -4px; left: 0;
+      width: 0; height: 2px;
+      background: var(--gold);
+      transition: width var(--transition);
+    }
+    .nav-list a:hover { color: var(--gold); }
+    .nav-list a:hover::after { width: 100%; }
+
+    /* Hero */
+    .hero {
+      padding: 14rem 0 8rem;
       text-align: center;
-      color: white;
-      background: rgba(0, 0, 0, 0.5);
-      border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+      background: var(--green-dark);
+      position: relative;
+      overflow: hidden;
     }
-
-    header img {
-      height: 100px;
-      margin-bottom: 10px;
-      max-width: 90%;
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('assets/beans-illustration.png') center/cover no-repeat;
+      opacity: .05;
     }
-
-    header h1 {
-      color: white;
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(3rem, 7vw, 5rem);
+      color: var(--white);
+      margin-bottom: 1rem;
+      animation: fadeIn 1s ease-out;
     }
-
-    #welcome-message {
-      font-size: 2em;
+    .hero p {
+      color: var(--white);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto 2.5rem;
+      animation: fadeIn 1s ease-out .3s forwards;
+      opacity: 0;
+    }
+    .hero .btn {
+      background: var(--gold);
+      color: var(--white);
+      padding: 1rem 2.6rem;
+      border-radius: 50px;
       font-weight: 600;
-      color: #FF6F61;
-      margin-top: 15px;
-    }
-
-    #verse-of-the-week {
-      font-size: 1em;
-      margin-top: 15px;
-      color: #fff;
-      font-style: italic;
-      background-color: rgba(0, 0, 0, 0.3);
-      padding: 10px;
-      border-radius: 8px;
+      font-size: 1.05rem;
+      transition: transform var(--transition), background var(--transition);
       display: inline-block;
-      max-width: 90%;
+      animation: fadeIn 1s ease-out .6s forwards;
+      opacity: 0;
     }
+    .hero .btn:hover {
+      background: #a88a59;
+      transform: translateY(-3px);
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    nav {
-      background-color: #0018F9;
+    /* Section Titles */
+    section { padding: 6rem 0; }
+    h2.section-title {
+      font-family: var(--font-head);
+      font-size: 2.5rem;
       text-align: center;
-      padding: 15px;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      margin-bottom: .8rem;
+      position: relative;
+    }
+    h2.section-title::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: var(--gold);
+      margin: .8rem auto 0;
+    }
+    .section-sub { text-align: center; color: var(--green-light); margin-bottom: 3rem; }
+
+    /* About */
+    #about .about { max-width: 800px; margin: 0 auto; text-align: center; }
+    #about .about p { margin-bottom: 1.5rem; font-size: 1.05rem; }
+
+    /* Decorative Divider */
+    .divider {
+      height: 60px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120"><path fill="%23faf5ec" d="M0,120 C360,0 1080,0 1440,120 L1440,0 L0,0 Z"></path></svg>') center bottom/cover no-repeat;
+      margin-top: -6rem;
     }
 
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1em;
-      display: inline-block;
+    /* Beans Cards */
+    .cards { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 2.5rem; }
+    .card {
+      background: var(--beige-dark);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+      position: relative;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+    .card:hover { transform: translateY(-6px); box-shadow: 0 16px 32px rgba(0,0,0,0.08); }
+    .card h3 {
+      font-family: var(--font-head);
+      font-size: 1.4rem;
+      margin: 1rem 1.5rem 0.6rem;
+    }
+    .card p {
+      margin: 0 1.5rem 1.2rem;
+      color: var(--green-light);
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      width: 48px;
+      height: 48px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="20" ry="30"/></svg>') no-repeat center/contain;
+      opacity: .08;
     }
 
-    nav a:hover {
-      color: #FF6F61;
-    }
-
-    section {
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: 40px auto;
-      background-color: rgba(255, 255, 255, 0.85);
+    /* Subscription */
+    .subscription {
+      background: var(--green-dark);
+      color: var(--white);
       border-radius: 12px;
-      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 5rem 2rem;
+      position: relative;
+      overflow: hidden;
     }
-
-    section h2 {
-      font-size: 2em;
-      font-weight: 600;
-      color: #333;
-      margin-bottom: 20px;
+    .subscription::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 50%;
+      width: 140px; height: 60px;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="30" ry="20"/></svg>') no-repeat center/contain;
+      transform: translateX(-50%);
+      opacity: .07;
     }
+    .subscription h2 { color: var(--white); }
+    .subscription p { max-width: 600px; margin: 0 auto 2rem; font-size: 1.05rem; }
+    .subscription form { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+    .subscription input { padding: 1rem 1.3rem; border-radius: 40px; border: none; width: 300px; }
+    .subscription button { padding: 1rem 2rem; border-radius: 40px; border: none; background: var(--gold); color: var(--white); font-weight: 600; transition: opacity var(--transition); }
+    .subscription button:hover { opacity: .9; }
 
-    ul {
-      padding-left: 20px;
-    }
-
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 12px;
-      transition: transform 0.3s ease;
-    }
-
-    .gallery img:hover {
-      transform: scale(1.05);
-    }
-
-    form input, form textarea {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 1em;
-    }
-
-    form button {
-      background-color: #0018F9;
-      color: white;
-      padding: 14px 25px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.1em;
-      transition: background-color 0.3s ease;
-    }
-
-    form button:hover {
-      background-color: #FF6F61;
-    }
-
-    footer {
-      background-color: #0018F9;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      font-size: 0.9em;
-    }
-
-    iframe {
-      width: 100%;
-      border: 0;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
-
-    a {
-      word-break: break-word;
-    }
-
-    @media (max-width: 768px) {
-      header img {
-        height: auto;
-        max-width: 80%;
-      }
-
-      #welcome-message {
-        font-size: 1.5em;
-      }
-
-      nav {
-        padding: 10px;
-      }
-
-      nav a {
-        display: block;
-        margin: 10px 0;
-        font-size: 1em;
-      }
-
-      section {
-        padding: 25px 15px;
-        margin: 20px 10px;
-      }
-
-      .gallery {
-        grid-template-columns: 1fr;
-      }
-    }
+    /* Footer */
+    footer { background: var(--beige); padding: 4rem 0; text-align: center; font-size: .95rem; }
+    .logo-footer { height: 44px; margin-bottom: 1rem; }
+    footer p { margin-bottom: .5rem; }
   </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header>
-    <img src="https://i.imgur.com/MkFvsKs.png" alt="Assembleia de Deus Missionária">
-    <h1>Assembleia de Deus Missionária - Antuérpia</h1>
-    <div id="welcome-message">Jezus houdt van jou</div>
-    <div id="verse-of-the-week"></div>
+    <div class="container">
+      <nav>
+        <a href="#"><img src="https://i.imgur.com/FiYugPT.png" alt="Terra do Café" class="logo"></a>
+        <ul class="nav-list">
+          <li><a href="#about">About</a></li>
+          <li><a href="#beans">Beans</a></li>
+          <li><a href="#subscription">Subscription</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <!-- Navigation -->
-  <nav>
-    <a href="#sobre">Sobre</a>
-    <a href="#cultos">Cultos</a>
-    <a href="#galeria">Galeria</a>
-    <a href="#contato">Contato</a>
-  </nav>
-
-  <!-- About -->
-  <section id="sobre">
-    <h2>Sobre Nós</h2>
-    <p>Somos uma comunidade cristã comprometida com a missão de pregar o evangelho em Antuérpia e além. Venha adorar conosco!</p>
-  </section>
-
-  <!-- Services -->
-  <section id="cultos">
-    <h2>Horários de Culto</h2>
-    <ul>
-      <li><strong>Quinta-feira:</strong> Culto às 19:30</li>
-      <li><strong>Domingo:</strong> Escola Bíblica às 09:00</li>
-      <li><strong>Domingo:</strong> Culto principal às 10:30</li>
-    </ul>
-    <p><strong>Endereço:</strong> Bredabaan 449, Merksem</p>
-    <iframe 
-      src="https://www.google.com/maps?q=Bredabaan+449,+Merksem&output=embed" 
-      height="300" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-    </iframe>
-  </section>
-
-  <!-- Gallery -->
-  <section id="galeria">
-    <h2>Galeria de Fotos</h2>
-    <div class="gallery">
-      <img src="https://i.imgur.com/5LTL1jJ.jpeg" alt="Foto 1" />
-      <img src="https://i.imgur.com/GtjQO3A.jpeg" alt="Foto 2" />
-      <img src="https://i.imgur.com/bBX7xSF.jpeg" alt="Foto 3" />
+  <section class="hero">
+    <div class="container">
+      <h1>Crafted for Connoisseurs</h1>
+      <p>Experience the artistry of single-origin coffee—micro-lots, heritage varietals, and custom roasts.</p>
+      <a href="#beans" class="btn">Explore Our Beans</a>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contato">
-    <h2>Contato</h2>
-    <p>Facebook: <a href="https://www.facebook.com/AssembleiaDeDeusMissionariaAntuerpia" target="_blank">Clique aqui</a></p>
-    <form onsubmit="alert('Mensagem enviada com sucesso!'); return false;">
-      <input type="text" placeholder="Seu nome" required />
-      <input type="email" placeholder="Seu email" required />
-      <textarea placeholder="Sua mensagem" required></textarea>
-      <button type="submit">Enviar</button>
-    </form>
+  <div class="divider"></div>
+
+  <section id="about">
+    <div class="container">
+      <h2 class="section-title">Our Philosophy</h2>
+      <p class="section-sub">Terroir, Tradition & Transparency</p>
+      <div class="about">
+        <p>At <strong>Terra do Café</strong>, we partner with artisanal growers cultivating rare varietals in nutrient-rich soils. Through precise micro-batch roasting, we unlock unique flavor profiles—vibrant florals, sun-ripened fruit or deep cocoa notes.</p>
+        <p>Our commitment to sustainable practices, fair trade, and traceability ensures every cup is as ethical as it is exquisite.</p>
+      </div>
+    </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    &copy; 2025 Assembleia de Deus Missionária - Antuérpia
-  </footer>
-
-  <!-- Verse of the Week Script -->
-  <script>
-    const verses = [
-      "João 3:16 – Porque Deus amou o mundo de tal maneira...",
-      "Romanos 8:1 – Agora, pois, nenhuma condenação há para os que estão em Cristo Jesus.",
-      "Filipenses 4:13 – Posso todas as coisas naquele que me fortalece.",
-      "Mateus 5:14 – Vós sois a luz do mundo.",
-      "2 Coríntios 5:17 – Se alguém está em Cristo, nova criatura é.",
-      "1 João 4:8 – Deus é amor.",
-      "Romanos 5:8 – Mas Deus prova o seu amor para conosco...",
-      "Hebreus 13:8 – Jesus Cristo é o mesmo ontem, hoje e eternamente.",
-      "João 14:6 – Eu sou o caminho, e a verdade e a vida...",
-      "Tiago 1:5 – Se algum de vós tem falta de sabedoria, peça-a a Deus...",
-      "Atos 16:31 – Crê no Senhor Jesus Cristo e serás salvo.",
-      "Mateus 11:28 – Vinde a mim, todos os que estais cansados...",
-      "Gálatas 2:20 – Já estou crucificado com Cristo...",
-      "Romanos 10:9 – Se com a tua boca confessares o Senhor Jesus...",
-      "João 8:32 – E conhecereis a verdade, e a verdade vos libertará.",
-      "Efésios 2:8 – Pela graça sois salvos, por meio da fé.",
-      "Hebreus 11:1 – A fé é o firme fundamento das coisas que se esperam...",
-      "Colossenses 3:23 – Tudo quanto fizerdes, fazei-o de coração...",
-      "1 Coríntios 13:13 – Agora, pois, permanecem a fé, a esperança e o amor...",
-      "Romanos 12:2 – Não vos conformeis com este mundo...",
-    ];
-
-    Date.prototype.getWeekNumber = function () {
-      const d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
-      const dayNum = d.getUTCDay() || 7;
-      d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-      const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-      return Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
-    };
-
-    const currentWeek = new Date().getWeekNumber();
-    const verse = verses[currentWeek % verses.length];
-    document.getElementById("verse-of-the-week").textContent = `Versículo da Semana: ${verse}`;
-  </script>
-</body>
-</html>
+  <section id="beans">
+    <div class="container">
+      <h2 class="section-title">Grand Cru Collection</n
