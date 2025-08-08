@@ -69,7 +69,15 @@
     /* =====================
        Hero (video + pattern)
        ===================== */
-    .hero{min-height:92vh;display:grid;place-items:center;position:relative;isolation:isolate;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35)), url('https://images.unsplash.com/photo-1589884455737-4bafa4e6a012?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat}
+    .hero{
+      min-height:92vh;
+      display:grid;
+      place-items:center;
+      position:relative;
+      isolation:isolate;
+      /* Force background image override */
+      background: linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35)), url('https://images.unsplash.com/photo-1589884455737-4bafa4e6a012?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat !important;
+    }
     .hero video,.hero .poster{background: url('https://images.unsplash.com/photo-1589884455737-4bafa4e6a012?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;} /* Replace YOUR_IMGUR_ID with the actual Imgur image ID of the Mantiqueira highlands photo */
     .hero .poster{background: url('https://images.unsplash.com/photo-1589884455737-4bafa4e6a012?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;}  
     /* Ensure poster shows by hiding video */
