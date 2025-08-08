@@ -3,12 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Terra do Café | Grand‑Cru Brazilian Coffee</title>
+  <title>Terra do Café | Grand-Cru Brazilian Coffee</title>
 
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Fraunces:wght@500;600;700&display=swap"
+    rel="stylesheet">
 
   <style>
     /* =====================
@@ -67,7 +69,7 @@
     }
 
     /* =====================
-       Hero (video + pattern)
+       Hero (direct bg image)
        ===================== */
     .hero{
       min-height:92vh;
@@ -75,31 +77,23 @@
       place-items:center;
       position:relative;
       isolation:isolate;
-      /* Force background image override */
-      background: linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35)), url('https://images.unsplash.com/photo-1589884455737-4bafa4e6a012?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat !important;
+      /* gradient overlay + Imgur photo */
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35)),
+        url('https://i.imgur.com/hREgzD9.jpg') center/cover no-repeat;
     }
-    .hero video,.hero .poster{background: url('https://images.unsplash.com/photo-1589884455737-4bafa4e6a012?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;} /* Replace YOUR_IMGUR_ID with the actual Imgur image ID of the Mantiqueira highlands photo */
-    .hero .poster{background: url('https://images.unsplash.com/photo-1589884455737-4bafa4e6a012?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;}  
-    /* Ensure poster shows by hiding video */
-    .hero video { display: none !important; }
-    .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35));z-index:-1}
-    /* Use place-specific photography instead of the generic video */
-    .hero video{display:none;}
     /* subtle bean pattern overlay */
-    .pattern{position:absolute;inset:0;opacity:.06;mix-blend-mode:soft-light;z-index:-1;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><g fill="%23ffffff"><ellipse cx="30" cy="30" rx="12" ry="20" transform="rotate(30 30 30)"/><ellipse cx="90" cy="70" rx="12" ry="20" transform="rotate(-25 90 70)"/><ellipse cx="60" cy="100" rx="10" ry="16" transform="rotate(15 60 100)"/></g></svg>') center/300px repeat}
-    .hero-content{color:#fff;text-align:center;padding:1rem;max-width:840px;animation:fadeUp .8s ease-out .15s both}
+    .hero::after{
+      content:"";
+      position:absolute;inset:0;z-index:0;opacity:.06;mix-blend-mode:soft-light;
+      background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><g fill="%23ffffff"><ellipse cx="30" cy="30" rx="12" ry="20" transform="rotate(30 30 30)"/><ellipse cx="90" cy="70" rx="12" ry="20" transform="rotate(-25 90 70)"/><ellipse cx="60" cy="100" rx="10" ry="16" transform="rotate(15 60 100)"/></g></svg>') center/300px repeat;
+    }
+    .hero-content{color:#fff;text-align:center;padding:1rem;max-width:840px;position:relative;z-index:1;animation:fadeUp .8s ease-out .15s both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     .hero h1{font-family:var(--ff-head);font-size:clamp(2.8rem,7vw,4.8rem);line-height:1.12;margin-bottom:1rem}
     .hero p{font-size:1.2rem;opacity:.92;margin:0 auto 2.2rem;max-width:700px}
     .btn{display:inline-block;padding:1rem 2.6rem;border-radius:60px;font-weight:600;background:var(--accent);color:#1d1d1d;transition:transform var(--tr),box-shadow var(--tr)}
     .btn:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.15)}
-
-    /* reduce motion support */
-    @media (prefers-reduced-motion: reduce){
-      .hero video{display:none}
-      .marquee-track{animation:none}
-      .btn,.card img{transition:none}
-    }
 
     /* =====================
        Pillars
@@ -134,6 +128,7 @@
     .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
     .fact{background:#faf9f6;border:1px solid #eee;border-radius:10px;padding:1rem;text-align:center}
     .fact strong{display:block;font-family:var(--ff-head);font-size:1.3rem;color:var(--primary)}
+    .muted{color:var(--muted);font-size:.9rem}
     @media(min-width:960px){.split{grid-template-columns:1.2fr .8fr}}
 
     /* =====================
@@ -148,15 +143,8 @@
        Footer (wave)
        ===================== */
     footer{background:var(--primary);color:#e9e9e9;text-align:center;padding:4rem 1rem;margin-top:6rem;position:relative}
-    footer::before{content:"";position:absolute;top:-40px;left:0;right:0;height:40px;background:url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1440 120\"><path fill=\"%23f6f4f0\" d=\"M0,120 C360,0 1080,0 1440,120 L1440,0 L0,0 Z\"/></svg>')center/cover no-repeat}
+    footer::before{content:"";position:absolute;top:-40px;left:0;right:0;height:40px;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 120"><path fill="%23f6f4f0" d="M0,120 C360,0 1080,0 1440,120 L1440,0 L0,0 Z"/></svg>')center/cover no-repeat}
     footer p{font-size:.92rem}
-      /* ===== Sidebar Facts ===== */
-    .facts-sidebar{position:relative;display:block;width:auto;max-width:280px;margin:0 auto 2rem;background:var(--surface);border:1px solid #eee;border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:1rem;}
-    .facts-sidebar .facts{display:grid;gap:.75rem}
-    .facts-sidebar .fact{background:#faf9f6;border:1px solid #eee;border-radius:10px;padding:.85rem;text-align:center}
-    .facts-sidebar .fact strong{display:block;font-family:var(--ff-head);font-size:1.25rem;color:var(--primary)}
-    .muted{color:var(--muted)}
-    @media (max-width: 1024px){.facts-sidebar{display:none}}
   </style>
 </head>
 <body>
@@ -186,25 +174,12 @@
       </nav>
     </div>
   </header>
-  <!-- Quick Facts Sidebar -->
-  <aside class="facts-sidebar" aria-label="Quick facts">
-    <h3 class="visually-hidden">Quick facts</h3>
-    <img src="https://images.unsplash.com/photo-1589884455737-4bafa4e6a012?auto=format&fit=crop&w=1200&q=80" alt="Mantiqueira highlands, Brazil" style="width:100%;border-radius:var(--radius);box-shadow:var(--shadow-sm);">
-      <div class="fact"><strong>1,200–1,800</strong><span class="muted">MASL elevation</span></div>
-      <div class="fact"><strong>12–18</strong><span class="muted">Day dry time</span></div>
-      <div class="fact"><strong>0%</strong><span class="muted">Additives</span></div>
-    </div>
-  </aside>
 
   <!-- ===== Hero ===== -->
   <section class="hero" aria-label="Intro">
-    <div class="poster" aria-hidden="true"></div>
-    <video src="https://cdn.coverr.co/videos/coverr-coffee-roasting-1128/1080p.mp4" autoplay muted loop playsinline aria-hidden="true"></video>
-    <div class="pattern" aria-hidden="true"></div>
-
     <div class="hero-content container">
-      <h1>Grand‑Cru Brazilian Coffee</h1>
-      <p>Single‑estate lots, meticulously roasted & delivered at peak freshness for the true aficionado.</p>
+      <h1>Grand-Cru Brazilian Coffee</h1>
+      <p>Single-estate lots, meticulously roasted & delivered at peak freshness for the true aficionado.</p>
       <a class="btn" href="https://daanbudel.github.io/Terranova/beans.html">Explore Collection</a>
     </div>
   </section>
@@ -218,8 +193,8 @@
       <div class="pillars">
         <div class="pillar">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4.1L18 20l-6-3.8L6 20l1.5-6.9L2 9h7z"/></svg>
-          <h3>Single‑Estate Lots</h3>
-          <p>Curated micro‑lots from Brazil’s most lauded terroirs, selected at cupping scores 86+.</p>
+          <h3>Single-Estate Lots</h3>
+          <p>Curated micro-lots from Brazil’s most lauded terroirs, selected at cupping scores 86+.</p>
         </div>
         <div class="pillar">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v4H4zm0 6h10v4H4zm0 6h7v4H4z"/></svg>
@@ -270,13 +245,13 @@
     <div class="container split">
       <div class="panel">
         <h2 class="section-title">From Soil to Cup</h2>
-        <p>Our partners cultivate heritage varietals in living soil across Mantiqueira & Cerrado Mineiro. We cup relentlessly, then roast to articulate origin—never to mask it.</p>
+        <p>Mantiqueira Highlands, Brazil — heritage varietals in living soil. We cup relentlessly, then roast to articulate origin—never to mask it.</p>
       </div>
       <div class="panel">
         <div class="facts" aria-label="Quick facts">
-          <div class="fact"><strong>86–90</strong><span class="muted">Cupping score</span></div>
           <div class="fact"><strong>1,200–1,800</strong><span class="muted">MASL elevation</span></div>
           <div class="fact"><strong>12–18</strong><span class="muted">Day dry time</span></div>
+          <div class="fact"><strong>86–90</strong><span class="muted">Cupping score</span></div>
           <div class="fact"><strong>0%</strong><span class="muted">Additives</span></div>
         </div>
       </div>
@@ -287,7 +262,7 @@
   <section aria-label="Newsletter">
     <div class="container callout">
       <h2 class="section-title">Join the Connoisseur List</h2>
-      <p class="lead">Early access to micro‑lots, tasting notes, and brew guides. No spam—just good coffee.</p>
+      <p class="lead">Early access to micro-lots, tasting notes, and brew guides. No spam—just good coffee.</p>
       <form action="#" method="post" aria-label="Subscribe">
         <label class="visually-hidden" for="email">Email</label>
         <input id="email" type="email" name="email" placeholder="you@example.com" required>
@@ -299,7 +274,7 @@
   <!-- ===== Footer ===== -->
   <footer>
     <div class="container">
-      <p>© 2025 Terra do Café — Grand‑Cru Brazilian Coffee</p>
+      <p>© 2025 Terra do Café — Grand-Cru Brazilian Coffee</p>
     </div>
   </footer>
 </body>
