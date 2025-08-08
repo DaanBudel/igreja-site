@@ -142,13 +142,6 @@
     footer{background:var(--primary);color:#e9e9e9;text-align:center;padding:4rem 1rem;margin-top:6rem;position:relative}
     footer::before{content:"";position:absolute;top:-40px;left:0;right:0;height:40px;background:url('data:image/svg+xml;utf8,<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 1440 120\"><path fill=\"%23f6f4f0\" d=\"M0,120 C360,0 1080,0 1440,120 L1440,0 L0,0 Z\"/></svg>')center/cover no-repeat}
     footer p{font-size:.92rem}
-      /* ===== Sidebar Facts ===== */
-    .facts-sidebar{position:fixed;right:24px;top:96px;width:280px;background:var(--surface);border:1px solid #eee;border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:1rem;z-index:1100}
-    .facts-sidebar .facts{display:grid;gap:.75rem}
-    .facts-sidebar .fact{background:#faf9f6;border:1px solid #eee;border-radius:10px;padding:.85rem;text-align:center}
-    .facts-sidebar .fact strong{display:block;font-family:var(--ff-head);font-size:1.25rem;color:var(--primary)}
-    .muted{color:var(--muted)}
-    @media (max-width: 1024px){.facts-sidebar{display:none}}
   </style>
 </head>
 <body>
@@ -178,15 +171,6 @@
       </nav>
     </div>
   </header>
-  <!-- Quick Facts Sidebar -->
-  <aside class="facts-sidebar" aria-label="Quick facts">
-    <h3 class="visually-hidden">Quick facts</h3>
-    <img src="https://images.unsplash.com/photo-1589884455737-4bafa4e6a012?auto=format&fit=crop&w=1200&q=80" alt="Mantiqueira highlands, Brazil" style="width:100%;border-radius:var(--radius);box-shadow:var(--shadow-sm);">
-      <div class="fact"><strong>1,200–1,800</strong><span class="muted">MASL elevation</span></div>
-      <div class="fact"><strong>12–18</strong><span class="muted">Day dry time</span></div>
-      <div class="fact"><strong>0%</strong><span class="muted">Additives</span></div>
-    </div>
-  </aside>
 
   <!-- ===== Hero ===== -->
   <section class="hero" aria-label="Intro">
