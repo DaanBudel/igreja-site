@@ -4,13 +4,29 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Terra do Café | Single-Estate Brazilian Coffee</title>
+
   <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Fraunces:wght@500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Fraunces:wght@500;600;700&display=swap"
+    rel="stylesheet">
+
   <style>
-    /* (styles unchanged) */
-    :root{--bg:#f6f4f0;--surface:#ffffff;--ink:#1f2221;--muted:#6b6f6d;--primary:#214534;--accent:#c7a46c;--radius:14px;--shadow-sm:0 6px 18px rgba(0,0,0,.06);--shadow-lg:0 18px 56px rgba(0,0,0,.12);--tr:.35s cubic-bezier(.4,0,.2,1);--ff-head:'Fraunces',serif;--ff-body:'Poppins',sans-serif}
+    :root{
+      --bg:#f6f4f0;
+      --surface:#ffffff;
+      --ink:#1f2221;
+      --muted:#6b6f6d;
+      --primary:#214534;
+      --accent:#c7a46c;
+      --radius:14px;
+      --shadow-sm:0 6px 18px rgba(0,0,0,.06);
+      --shadow-lg:0 18px 56px rgba(0,0,0,.12);
+      --tr:.35s cubic-bezier(.4,0,.2,1);
+      --ff-head:'Fraunces',serif;
+      --ff-body:'Poppins',sans-serif;
+    }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{font-family:var(--ff-body);background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
@@ -18,11 +34,36 @@
     a{color:inherit;text-decoration:none}
     .container{width:90%;max-width:1280px;margin-inline:auto}
     .visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    header{position:sticky;top:0;z-index:1000;background:rgba(246,244,240,.92);backdrop-filter:blur(8px);box-shadow:var(--shadow-sm)}
-    .nav{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
-    .brand{display:flex;align-items:center;gap:.6rem}
-    .brand img{height:46px;border-radius:10px}
-    .brand span{font:600 1.4rem/1 var(--ff-head)}
+
+    /* Header */
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(246,244,240,.92);
+      backdrop-filter:blur(8px);
+      box-shadow:var(--shadow-sm);
+      padding:0.5rem 0;
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+    }
+    .brand img{
+      height:72px;
+      border-radius:10px;
+    }
+    .brand span{
+      font:600 1.4rem/1 var(--ff-head);
+    }
+
     .nav-toggle{display:none}
     .hamburger{display:inline-grid;row-gap:5px;cursor:pointer;padding:.4rem}
     .hamburger span{width:26px;height:2px;background:var(--ink);transition:transform var(--tr),opacity var(--tr)}
@@ -34,15 +75,35 @@
     #nav-check:checked + label .line-1{transform:translateY(7px) rotate(45deg)}
     #nav-check:checked + label .line-2{opacity:0}
     #nav-check:checked + label .line-3{transform:translateY(-7px) rotate(-45deg)}
-    @media(min-width:900px){.hamburger{display:none}nav ul{display:flex;flex-direction:row;gap:2.2rem;padding:0}}
-    .hero{min-height:92vh;display:grid;place-items:center;position:relative;isolation:isolate;background:linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35)),url('https://i.imgur.com/hREgzD9.jpg') center/cover no-repeat}
-    .hero::after{content:"";position:absolute;inset:0;z-index:0;opacity:.06;mix-blend-mode:soft-light;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><g fill="%23ffffff"><ellipse cx="30" cy="30" rx="12" ry="20" transform="rotate(30 30 30)"/><ellipse cx="90" cy="70" rx="12" ry="20" transform="rotate(-25 90 70)"/><ellipse cx="60" cy="100" rx="10" ry="16" transform="rotate(15 60 100)"/></g></svg>') center/300px repeat}
+    @media(min-width:900px){
+      .hamburger{display:none}
+      nav ul{display:flex;flex-direction:row;gap:2.2rem;padding:0}
+    }
+
+    /* Hero */
+    .hero{
+      min-height:92vh;
+      display:grid;
+      place-items:center;
+      position:relative;
+      isolation:isolate;
+      background:
+        linear-gradient(180deg,rgba(0,0,0,.55),rgba(0,0,0,.35)),
+        url('https://i.imgur.com/hREgzD9.jpg') center/cover no-repeat;
+    }
+    .hero::after{
+      content:"";
+      position:absolute;inset:0;z-index:0;opacity:.06;mix-blend-mode:soft-light;
+      background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120"><g fill="%23ffffff"><ellipse cx="30" cy="30" rx="12" ry="20" transform="rotate(30 30 30)"/><ellipse cx="90" cy="70" rx="12" ry="20" transform="rotate(-25 90 70)"/><ellipse cx="60" cy="100" rx="10" ry="16" transform="rotate(15 60 100)"/></g></svg>') center/300px repeat;
+    }
     .hero-content{color:#fff;text-align:center;padding:1rem;max-width:840px;position:relative;z-index:1;animation:fadeUp .8s ease-out .15s both}
     @keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
     .hero h1{font-family:var(--ff-head);font-size:clamp(2.8rem,7vw,4.8rem);line-height:1.12;margin-bottom:1rem}
     .hero p{font-size:1.2rem;opacity:.92;margin:0 auto 2.2rem;max-width:700px}
     .btn{display:inline-block;padding:1rem 2.6rem;border-radius:60px;font-weight:600;background:var(--accent);color:var(--ink);transition:transform var(--tr),box-shadow var(--tr)}
     .btn:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(0,0,0,.15)}
+
+    /* Sections, Story, Cards, etc. */
     section{padding-block:6rem}
     .section-title{font-family:var(--ff-head);font-size:2.6rem;text-align:center;margin-bottom:.8rem}
     .section-title::after{content:"";display:block;width:96px;height:3px;background:var(--accent);margin:.7rem auto 2.3rem}
@@ -68,7 +129,10 @@
     .chip{background:#fff;border:1px solid #e6e0d6;border-radius:999px;padding:.4rem .8rem;font-size:.9rem;color:#5a5e5c}
     .story-photo{border-radius:12px;overflow:hidden;box-shadow:var(--shadow-sm);aspect-ratio:4/3;max-height:520px}
     .story-photo img{width:100%;height:100%;object-fit:cover;object-position:center}
-    @media(min-width:960px){.story-grid{grid-template-columns:1.1fr .9fr}.story-photo{aspect-ratio:5/4}}
+    @media(min-width:960px){
+      .story-grid{grid-template-columns:1.1fr .9fr}
+      .story-photo{aspect-ratio:5/4}
+    }
     .split{display:grid;gap:2rem;grid-template-columns:1fr;align-items:center}
     .split .panel{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-sm);padding:2rem}
     .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem;margin-top:1rem}
@@ -86,16 +150,17 @@
   </style>
 </head>
 <body>
-  <!-- Header -->
   <header>
     <div class="container nav" role="navigation" aria-label="Primary">
       <a class="brand" href="index.html">
-        <img src="https://i.imgur.com/FiYugPT.png" alt="Terra do Café logo">
+        <img src="https://i.imgur.com/B74aHZT.png" alt="Terra do Café logo">
         <span>Terra do Café</span>
       </a>
       <input type="checkbox" id="nav-check" class="nav-toggle" aria-hidden="true">
       <label for="nav-check" class="hamburger" aria-label="Toggle navigation" aria-controls="primary-nav">
-        <span class="line-1"></span><span class="line-2"></span><span class="line-3"></span>
+        <span class="line-1"></span>
+        <span class="line-2"></span>
+        <span class="line-3"></span>
       </label>
       <nav id="primary-nav">
         <ul>
@@ -109,7 +174,6 @@
     </div>
   </header>
 
-  <!-- Hero -->
   <section class="hero" aria-label="Intro">
     <div class="hero-content container">
       <h1>Single-Estate Brazilian Coffee</h1>
@@ -118,7 +182,6 @@
     </div>
   </section>
 
-  <!-- MOVED UP: Story -->
   <section aria-label="Story">
     <div class="container story" id="story">
       <div class="story-grid">
@@ -130,93 +193,15 @@
             <span class="chip">12–18 day dry time</span>
             <span class="chip">Natural / Honey process</span>
           </div>
-          <p>Grown on a family-run estate at high altitude, <strong>Origem</strong> is harvested by hand at peak ripeness. The farmer’s meticulous attention—from selective picking to raised-bed drying—creates a cup with layered sweetness, florals, and a lingering cocoa finish.</p>
-          <p style="margin-top:1rem;"><em>Farmer spotlight:</em> add the grower’s name and story here—how many generations on the land, the switch to regenerative practices, and the craft behind this micro-lot.</p>
+          <p>
+            Grown on a family-run estate at high altitude, <strong>Origem</strong> is harvested by hand at peak ripeness.
+            The farmer’s meticulous attention—from selective picking to raised-bed drying—creates a cup with layered
+            sweetness, florals, and a lingering cocoa finish.
+          </p>
+          <p style="margin-top:1rem;">
+            <em>Farmer spotlight:</em> add the grower’s name and story here—how many generations on the land, the switch to
+            regenerative practices, and the craft behind this micro-lot.
+          </p>
         </div>
         <div class="story-photo" aria-hidden="true">
-          <img src="https://i.imgur.com/jclx1TQ.jpeg" alt="Mantiqueira Highlands coffee farm" loading="lazy">
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Featured -->
-  <section aria-label="Featured collection">
-    <div class="container">
-      <h2 class="section-title">Featured Collection</h2>
-      <div class="carousel" role="list">
-        <article class="card" role="listitem">
-          <img loading="lazy" src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=1200&q=80" alt="Origem coffee beans">
-          <div class="card-info">
-            <h4>Origem</h4>
-            <span class="price">Price on request</span>
-          </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- MOVED DOWN: What Sets Us Apart -->
-  <section>
-    <div class="container">
-      <h2 class="section-title">What Sets Us Apart</h2>
-      <p class="lead">Precision sourcing, rigorous roasting, and transparent provenance—so every bag speaks of place and craft.</p>
-      <div class="pillars">
-        <div class="pillar">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l3 7h7l-5.5 4.1L18 20l-6-3.8L6 20l1.5-6.9L2 9h7z"/></svg>
-          <h3>Single-Estate Lots</h3>
-          <p>Curated micro-lots from Brazil’s most lauded terroirs, selected at cupping scores 86+.</p>
-        </div>
-        <div class="pillar">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16v4H4zm0 6h10v4H4zm0 6h7v4H4z"/></svg>
-          <h3>Precision Roasting</h3>
-          <p>Profile development on Loring systems to unlock fruit clarity, sweetness, and texture.</p>
-        </div>
-        <div class="pillar">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 100 20 10 10 0 000-20zm-1 5h2v6h-2zm1 8a1.5 1.5 0 110 3 1.5 1.5 0 010-3z"/></svg>
-          <h3>Full Traceability</h3>
-          <p>QR on every bag—altitude, cultivar, harvest, processing, and brew guidance.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Provenance -->
-  <section aria-label="Provenance">
-    <div class="container split">
-      <div class="panel">
-        <h2 class="section-title">From Soil to Cup</h2>
-        <p>Mantiqueira Highlands, Brazil — heritage varietals in living soil. We cup relentlessly, then roast to articulate origin—never to mask it.</p>
-      </div>
-      <div class="panel">
-        <div class="facts" aria-label="Quick facts">
-          <div class="fact"><strong>1,200–1,800</strong><span class="muted">MASL elevation</span></div>
-          <div class="fact"><strong>12–18</strong><span class="muted">Day dry time</span></div>
-          <div class="fact"><strong>86–90</strong><span class="muted">Cupping score</span></div>
-          <div class="fact"><strong>0%</strong><span class="muted">Additives</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Newsletter -->
-  <section aria-label="Newsletter">
-    <div class="container callout">
-      <h2 class="section-title">Join the Connoisseur List</h2>
-      <p class="lead">Early access to micro-lots, tasting notes, and brew guides. No spam—just good coffee.</p>
-      <form action="#" method="post" aria-label="Subscribe">
-        <label class="visually-hidden" for="email">Email</label>
-        <input id="email" type="email" name="email" placeholder="you@example.com" required>
-        <button type="submit">Subscribe</button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>© 2025 Terra do Café — Single-Estate Brazilian Coffee</p>
-    </div>
-  </footer>
-</body>
-</html>
+          <img src="https://i.imgur.com/jclx1TQ.jpeg" alt="Mantiqueir
