@@ -1,22 +1,22 @@
 <!doctype html>
-<html lang="nl">
+<html lang="pt">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Jouw Kerk</title>
-  <meta name="description" content="Welkom bij Jouw Kerk – samen aanbidden, samen groeien, samen dienen."/>
-  <!-- Tailwind: geen build nodig -->
+  <title>Assembléia de Deus Missionária - Antuérpia</title>
+  <meta name="description" content="Assembléia de Deus Missionária - Antuérpia — uma comunidade acolhedora para adorar, crescer e servir."/>
+  <!-- Tailwind: sem build -->
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
     .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.show { opacity: 1; transform: translateY(0); }
 
-    /* --- Dag/Nacht achtergrond van de hero --- */
+    /* Fundo Dia/Noite do hero */
     .hero-sky { background: linear-gradient(to bottom, #e0f2fe, #ffffff); }
     .night .hero-sky { background: linear-gradient(to bottom, #0b1220, #0f172a); }
 
-    /* --- Animaties voor de kerk --- */
+    /* Animações da igreja */
     @keyframes cloud-move { from { transform: translateX(-15%); } to { transform: translateX(115%); } }
     @keyframes floatY { 0% { transform: translateY(0); } 50% { transform: translateY(-6px);} 100% { transform: translateY(0);} }
     @keyframes swing { 0% { transform: rotate(-10deg);} 50% { transform: rotate(10deg);} 100% { transform: rotate(-10deg);} }
@@ -32,17 +32,17 @@
     svg .window-glow { animation: glow 3s ease-in-out infinite alternate; }
     svg .hover-float { animation: floatY 6s ease-in-out infinite; }
 
-    /* Nachtmodus voor de illustratie */
+    /* Noite na ilustração */
     svg .skynight, svg .stars, svg .moon { display:none; }
     .night svg .skynight, .night svg .stars, .night svg .moon { display:block; }
     .night svg .sun, .night svg .sun-rays, .night svg .cloud { display:none; }
     .night svg .window-glow { animation-duration: 1.6s; }
 
-    /* deur-licht opent bij hover op de illustratie */
+    /* luz da porta ao hover */
     .church-anim:hover .door-light { transform: scaleY(1); opacity: .65; }
     .door-light { transform-origin: 50% 100%; transform: scaleY(0); opacity:0; transition: transform .5s ease, opacity .5s ease; }
 
-    /* Knop-styles voor de nachtmodus toggle (extra zichtbaar) */
+    /* Botão modo noturno */
     .toggle { transition: transform .2s ease; }
     .toggle:active { transform: scale(.96); }
   </style>
@@ -51,28 +51,28 @@
   <!-- Config -->
   <script>
     const LOGO_URL = "https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/308109550_174812785090674_3243926765759956750_n.png?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=wNHvzVtizeQQ7kNvwFQNqkF&_nc_oc=Admjb0D8UofJxhW4JlPOg1XDCms8DTKEnvX7r2kcYL8XO60Up0I5SVj7GKMPIIjkflolKdqy0HCatjbTPUCKWTUY&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=IfnSgN19roKW5EmPk3ylig&oh=00_AfXMwG5uVnMbrkeJvQNc8zfkI5Rvcv9pb9I9RhouN8w7Rg&oe=68B659EE";
-    const CHURCH_NAME = "Jouw Kerk"; // pas aan
+    const CHURCH_NAME = "Assembléia de Deus Missionária - Antuérpia";
   </script>
 
-  <!-- Nav -->
+  <!-- Navbar -->
   <header class="fixed top-0 inset-x-0 z-50">
     <div class="max-w-6xl mx-auto px-4">
       <div class="mt-4 flex items-center gap-4 rounded-2xl bg-white/70 backdrop-blur border border-sky-200/60 shadow px-4 py-3">
         <a href="#home" class="flex items-center gap-2">
-          <img id="logo" class="h-8 w-8 rounded object-contain" alt="Kerk logo" />
+          <img id="logo" class="h-8 w-8 rounded object-contain" alt="Logo da igreja" />
           <span class="font-bold text-sky-900" id="brand"></span>
         </a>
         <nav class="ml-auto hidden md:flex items-center gap-2">
-          <a href="#over" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Over ons</a>
-          <a href="#diensten" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Diensten</a>
-          <a href="#media" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Media</a>
-          <a href="#contact" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Contact</a>
+          <a href="#sobre" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Sobre nós</a>
+          <a href="#cultos" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Cultos</a>
+          <a href="#midia" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Mídia</a>
+          <a href="#contato" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Contato</a>
         </nav>
-        <!-- Nachtmodus toggle -->
+        <!-- Toggle modo noturno -->
         <button id="nightToggle" class="toggle ml-2 inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-3 py-2 text-sm">
           <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.5 6.5-1.5-1.5M8 7 6.5 5.5m11 0L16.5 7M7 17l-1.5 1.5"/></svg>
           <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <span id="toggleText" class="hidden sm:inline">Nachtmodus</span>
+          <span id="toggleText" class="hidden sm:inline">Modo noturno</span>
         </button>
       </div>
     </div>
@@ -85,27 +85,27 @@
       <div class="reveal">
         <div class="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur border border-sky-200 px-3 py-1 text-sky-900 mb-4 shadow">
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          <span id="next-service-label" class="text-sm">Eerstvolgende dienst wordt geladen…</span>
+          <span id="next-service-label" class="text-sm">Carregando o próximo culto…</span>
         </div>
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-sky-900">Welkom bij <span class="text-sky-600" id="hero-brand"></span></h1>
-        <p class="mt-4 text-sky-800/80 text-lg max-w-xl">Een warme gemeenschap waar Jezus centraal staat. Samen aanbidden, samen groeien, samen dienen.</p>
+        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-sky-900">Bem-vindo à <span class="text-sky-600" id="hero-brand"></span></h1>
+        <p class="mt-4 text-sky-800/80 text-lg max-w-xl">Uma comunidade calorosa onde Cristo está no centro. Adoramos juntos, crescemos juntos e servimos a nossa cidade.</p>
         <div class="mt-6 flex flex-wrap gap-3">
-          <a href="#diensten" class="inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-5 py-3 font-medium shadow hover:shadow-lg transition">Plan je bezoek</a>
-          <a href="#media" class="inline-flex items-center gap-2 rounded-xl border border-sky-300 text-sky-900 px-5 py-3 font-medium bg-white/70 hover:bg-sky-50 transition">Bekijk livestream</a>
+          <a href="#cultos" class="inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-5 py-3 font-medium shadow hover:shadow-lg transition">Planeie a sua visita</a>
+          <a href="#midia" class="inline-flex items-center gap-2 rounded-xl border border-sky-300 text-sky-900 px-5 py-3 font-medium bg-white/70 hover:bg-sky-50 transition">Ver transmissão</a>
         </div>
         <div class="mt-8 grid grid-cols-3 gap-4 max-w-lg">
-          <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow"><div class="font-semibold text-sky-900">Welkom</div><div class="text-sm text-sky-700/80">Iedereen is geliefd</div></div>
-          <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow"><div class="font-semibold text-sky-900">Gemeenschap</div><div class="text-sm text-sky-700/80">Samen sterker</div></div>
-          <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow"><div class="font-semibold text-sky-900">Woord</div><div class="text-sm text-sky-700/80">Bijbel-gefundeerd</div></div>
+          <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow"><div class="font-semibold text-sky-900">Acolhimento</div><div class="text-sm text-sky-700/80">Todos são amados</div></div>
+          <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow"><div class="font-semibold text-sky-900">Comunidade</div><div class="text-sm text-sky-700/80">Mais fortes juntos</div></div>
+          <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow"><div class="font-semibold text-sky-900">Palavra</div><div class="text-sm text-sky-700/80">Fundamento bíblico</div></div>
         </div>
       </div>
 
-      <!-- Geanimeerde kerk (SVG) -->
+      <!-- Ilustração animada da igreja -->
       <div class="reveal">
         <div class="relative">
           <div class="absolute -inset-6 bg-sky-200/50 blur-2xl rounded-3xl"></div>
           <div class="relative rounded-3xl border border-sky-200 overflow-hidden shadow-2xl bg-gradient-to-b from-sky-50 to-white p-4">
-            <svg class="church-anim w-full h-auto" viewBox="0 0 560 360" role="img" aria-label="Geanimeerde illustratie van een kerk">
+            <svg class="church-anim w-full h-auto" viewBox="0 0 560 360" role="img" aria-label="Ilustração animada de uma igreja">
               <defs>
                 <linearGradient id="skyDay" x1="0" x2="0" y1="0" y2="1">
                   <stop offset="0%" stop-color="#e0f2fe"/>
@@ -125,11 +125,11 @@
                 </linearGradient>
               </defs>
 
-              <!-- Achtergrond dag/nacht -->
+              <!-- Céu dia/noite -->
               <rect class="skyday" width="560" height="360" fill="url(#skyDay)"/>
               <rect class="skynight" width="560" height="360" fill="url(#skyNight)"/>
 
-              <!-- Sterren + maan (nacht) -->
+              <!-- Estrelas + lua (noite) -->
               <g class="stars">
                 <circle cx="60" cy="50" r="1.5" fill="#e2e8f0" style="animation: twinkle 3s -0.2s infinite"></circle>
                 <circle cx="130" cy="90" r="1.2" fill="#e2e8f0" style="animation: twinkle 2.6s -1s infinite"></circle>
@@ -144,7 +144,7 @@
                 <circle r="20" fill="#0f172a" transform="translate(8, -6)"></circle>
               </g>
 
-              <!-- Zon (dag) -->
+              <!-- Sol (dia) -->
               <g class="sun hover-float" transform="translate(90,80)">
                 <circle r="28" fill="#fde68a"/>
                 <g class="sun-rays" stroke="#fcd34d" stroke-width="4" stroke-linecap="round">
@@ -159,7 +159,7 @@
                 </g>
               </g>
 
-              <!-- Wolken (dag) -->
+              <!-- Nuvens (dia) -->
               <g class="cloud" transform="translate(-60,40)">
                 <g fill="#ffffff">
                   <circle cx="0" cy="0" r="20"/><circle cx="20" cy="-6" r="24"/><circle cx="44" cy="0" r="18"/><rect x="-6" y="0" width="58" height="18" rx="9"/>
@@ -176,199 +176,189 @@
                 </g>
               </g>
 
-              <!-- Grond -->
+              <!-- Chão -->
               <path d="M0,300 C120,280 220,320 340,300 C420,286 500,310 560,300 L560,360 L0,360 Z" fill="#e0f2fe"/>
 
-              <!-- Kerk -->
+              <!-- Igreja -->
               <g transform="translate(305,120)">
-                <!-- Toren -->
                 <rect x="-30" y="-10" width="60" height="160" fill="#ffffff" stroke="#bae6fd" stroke-width="3" rx="6"/>
-                <!-- Torendak -->
                 <polygon points="0,-50 -40,-10 40,-10" fill="url(#roof)" stroke="#0ea5e9" stroke-width="3"/>
-                <!-- Kruis -->
                 <g stroke="#0369a1" stroke-width="4" stroke-linecap="round">
                   <line x1="0" y1="-62" x2="0" y2="-80"/>
                   <line x1="-10" y1="-71" x2="10" y2="-71"/>
                 </g>
-                <!-- Klok -->
                 <g class="tower-bell" transform="translate(0,18)">
                   <path d="M-12,0 Q0,-16 12,0 L12,14 L-12,14 Z" fill="url(#bellGrad)" stroke="#f59e0b" stroke-width="2"/>
                   <circle cx="0" cy="14" r="3.5" fill="#b45309"/>
                 </g>
 
-                <!-- Hoofdgebouw -->
                 <g transform="translate(0,70)">
                   <rect x="-110" y="0" width="220" height="100" fill="#ffffff" stroke="#bae6fd" stroke-width="3" rx="10"/>
-                  <!-- Dak -->
                   <polygon points="0,-48 -130,0 130,0" fill="url(#roof)" stroke="#0ea5e9" stroke-width="3"/>
-                  <!-- Ramen -->
                   <g fill="#7dd3fc" stroke="#0ea5e9" stroke-width="2">
                     <rect class="window-glow" x="-80" y="26" width="26" height="34" rx="6"/>
                     <rect class="window-glow" x="-13" y="26" width="26" height="34" rx="6"/>
                     <rect class="window-glow" x="54"  y="26" width="26" height="34" rx="6"/>
                   </g>
-                  <!-- Deur met boog -->
                   <g transform="translate(0,20)">
                     <path d="M-18,58 L-18,28 A18,18 0 0 1 18,28 L18,58 Z" fill="#0ea5e9" stroke="#0284c7" stroke-width="2"/>
-                    <!-- Deur-licht dat opent op hover -->
                     <rect class="door-light" x="-16" y="40" width="32" height="18" fill="#e0f2fe"/>
                   </g>
                 </g>
               </g>
 
-              <!-- Subtiele schaduw onder de kerk -->
               <ellipse cx="305" cy="302" rx="120" ry="10" fill="#93c5fd" opacity=".25"/>
             </svg>
           </div>
         </div>
       </div>
-      <!-- einde geanimeerde kerk -->
+      <!-- fim da ilustração -->
     </div>
     <div class="absolute left-1/2 -translate-x-1/2 bottom-6 hidden md:flex flex-col items-center text-sky-700/70">
       <svg class="h-6 w-6 animate-bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 6 8 6-8"/></svg>
-      <span class="text-xs">Scroll</span>
+      <span class="text-xs">Rolar</span>
     </div>
   </section>
 
-  <!-- Over -->
-  <section id="over" class="relative py-20">
+  <!-- Sobre nós -->
+  <section id="sobre" class="relative py-20">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-sky-50/60 -z-10"></div>
     <div class="max-w-6xl mx-auto px-6 reveal">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Over ons</h2>
-      <p class="mt-2 text-sky-700/80 max-w-2xl">Onze missie is Jezus bekendmaken en mensen discipelen in liefde en waarheid.</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Sobre nós</h2>
+      <p class="mt-2 text-sky-700/80 max-w-2xl">Nossa missão é tornar Jesus conhecido e discipular pessoas em amor e verdade.</p>
       <div class="mt-10 grid md:grid-cols-2 gap-8 items-center">
         <div>
-          <p class="text-sky-800/90 leading-relaxed">We zijn een gemeenschap die gelooft in de kracht van het evangelie. We komen samen om God te aanbidden, elkaar te bemoedigen en onze stad te dienen. Jong en oud, iedere achtergrond – je bent welkom zoals je bent.</p>
+          <p class="text-sky-800/90 leading-relaxed">Somos uma comunidade que crê no poder do evangelho. Reunimo-nos para adorar a Deus, encorajar uns aos outros e servir a cidade. Jovens e idosos, de todas as origens — você é bem-vindo como é.</p>
           <ul class="mt-6 space-y-3 text-sky-800/90">
-            <li class="flex items-start gap-3"><span class="h-2 w-2 mt-2 rounded-full bg-sky-500"></span>Bijbelgetrouwe prediking en aanbidding</li>
-            <li class="flex items-start gap-3"><span class="h-2 w-2 mt-2 rounded-full bg-sky-500"></span>Kleingroepen & discipelschap</li>
-            <li class="flex items-start gap-3"><span class="h-2 w-2 mt-2 rounded-full bg-sky-500"></span>Betrokken bij de buurt en hulpverlening</li>
+            <li class="flex items-start gap-3"><span class="h-2 w-2 mt-2 rounded-full bg-sky-500"></span>Pregação e adoração bíblicas</li>
+            <li class="flex items-start gap-3"><span class="h-2 w-2 mt-2 rounded-full bg-sky-500"></span>Grupos pequenos & discipulado</li>
+            <li class="flex items-start gap-3"><span class="h-2 w-2 mt-2 rounded-full bg-sky-500"></span>Serviço à comunidade e ajuda social</li>
           </ul>
         </div>
         <div class="relative">
           <div class="absolute -inset-4 bg-sky-100 blur-2xl rounded-3xl"></div>
           <div class="relative overflow-hidden rounded-3xl border border-sky-200 bg-white/70 p-6">
-            <blockquote class="text-xl md:text-2xl text-sky-900 font-semibold leading-relaxed">"Want waar twee of drie in Mijn Naam bijeen zijn, daar ben Ik in hun midden." <span class="text-sky-600">(Matt. 18:20)</span></blockquote>
+            <blockquote class="text-xl md:text-2xl text-sky-900 font-semibold leading-relaxed">“Porque, onde estiverem dois ou três reunidos em meu nome, ali estou no meio deles.” <span class="text-sky-600">(Mt 18:20)</span></blockquote>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Diensten -->
-  <section id="diensten" class="relative py-20">
+  <!-- Cultos -->
+  <section id="cultos" class="relative py-20">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-sky-50/60 -z-10"></div>
     <div class="max-w-6xl mx-auto px-6 reveal">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Diensten & bijeenkomsten</h2>
-      <p class="mt-2 text-sky-700/80 max-w-2xl">Plan je bezoek en ontdek wat er deze week gebeurt.</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Cultos & reuniões</h2>
+      <p class="mt-2 text-sky-700/80 max-w-2xl">Planeie a sua visita e descubra o que acontece esta semana.</p>
       <div class="mt-10 grid md:grid-cols-3 gap-6">
         <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow">
-          <div class="font-semibold text-sky-900">Bijbelstudie (Zondag)</div>
+          <div class="font-semibold text-sky-900">Estudo Bíblico (Domingo)</div>
           <div class="text-sm text-sky-700/80">09:00 – 10:30</div>
-          <p class="mt-2 text-sky-800/80">Verdiep je samen in Gods Woord.</p>
+          <p class="mt-2 text-sky-800/80">Aprofunde-se na Palavra de Deus.</p>
         </div>
         <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow">
-          <div class="font-semibold text-sky-900">Hoofddienst (Zondag)</div>
+          <div class="font-semibold text-sky-900">Culto Principal (Domingo)</div>
           <div class="text-sm text-sky-700/80">10:30 – 12:30</div>
-          <p class="mt-2 text-sky-800/80">Aanbidding, prediking en gemeenschap.</p>
+          <p class="mt-2 text-sky-800/80">Adoração, pregação e comunhão.</p>
         </div>
         <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow">
-          <div class="font-semibold text-sky-900">Donderdag Avonddienst</div>
+          <div class="font-semibold text-sky-900">Culto de Quinta-feira</div>
           <div class="text-sm text-sky-700/80">19:30 – 21:00</div>
-          <p class="mt-2 text-sky-800/80">Door-de-weekse samenkomst en gebed.</p>
+          <p class="mt-2 text-sky-800/80">Encontro semanal e oração.</p>
         </div>
       </div>
 
       <div class="mt-10 rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 flex flex-col md:flex-row items-center gap-6">
         <div class="flex-1">
-          <div class="text-sm uppercase tracking-wide text-sky-700/70 font-medium">Countdown</div>
+          <div class="text-sm uppercase tracking-wide text-sky-700/70 font-medium">Contagem regressiva</div>
           <div class="text-2xl md:text-3xl font-extrabold text-sky-900">
-            <span>Eerstvolgende dienst: </span><span id="nextServiceName">—</span>
+            <span>Próximo culto: </span><span id="nextServiceName">—</span>
           </div>
           <div class="text-sm text-sky-700/70 mt-1" id="nextServiceTime">—</div>
         </div>
-        <div class="grid grid-cols-4 gap-3" id="countdown">
-          <!-- JS plaatst waarden -->
-        </div>
+        <div class="grid grid-cols-4 gap-3" id="countdown"><!-- JS injeta valores --></div>
       </div>
     </div>
   </section>
 
-  <!-- Media -->
-  <section id="media" class="relative py-20">
+  <!-- Mídia -->
+  <section id="midia" class="relative py-20">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-sky-50/60 -z-10"></div>
     <div class="max-w-6xl mx-auto px-6 reveal">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Media & Livestream</h2>
-      <p class="mt-2 text-sky-700/80 max-w-2xl">Bekijk de laatste preek of volg live.</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Mídia & Transmissão</h2>
+      <p class="mt-2 text-sky-700/80 max-w-2xl">Assista à última mensagem ou acompanhe ao vivo.</p>
       <div class="mt-10 grid lg:grid-cols-2 gap-8 items-start">
         <div class="rounded-2xl border border-sky-200 bg-white/70 p-4">
           <div class="aspect-video w-full overflow-hidden rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center">
-            <!-- Vervang de src met jouw YouTube embed link -->
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PL" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <!-- Substitua a src pela sua playlist/vídeo do YouTube -->
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PL" title="Player do YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </div>
           <div class="mt-4 flex items-center justify-between">
             <div>
-              <div class="font-semibold text-sky-900">Laatste preek</div>
-              <div class="text-sm text-sky-700/80">Voeg jouw YouTube-link toe</div>
+              <div class="font-semibold text-sky-900">Última pregação</div>
+              <div class="text-sm text-sky-700/80">Adicione o link da sua transmissão</div>
             </div>
-            <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-600 text-white font-medium">Vraag hulp</a>
+            <a href="#contato" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-600 text-white font-medium">Pedir ajuda</a>
           </div>
         </div>
 
-        <!-- Foto's -->
+        <!-- Fotos -->
         <div class="grid sm:grid-cols-2 gap-6">
           <figure class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60">
-            <img src="https://i.imgur.com/5LTL1jJ.jpg" alt="Gemeente foto 1" class="w-full h-48 object-cover"/>
-            <figcaption class="p-3 text-sky-800/80 text-sm">Gemeente moment</figcaption>
+            <img src="https://i.imgur.com/5LTL1jJ.jpg" alt="Foto da igreja 1" class="w-full h-48 object-cover"/>
+            <figcaption class="p-3 text-sky-800/80 text-sm">Momento da igreja</figcaption>
           </figure>
           <figure class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60">
-            <img src="https://i.imgur.com/GtjQO3A.jpg" alt="Gemeente foto 2" class="w-full h-48 object-cover"/>
-            <figcaption class="p-3 text-sky-800/80 text-sm">Samenkomst</figcaption>
+            <img src="https://i.imgur.com/GtjQO3A.jpg" alt="Foto da igreja 2" class="w-full h-48 object-cover"/>
+            <figcaption class="p-3 text-sky-800/80 text-sm">Reunião</figcaption>
           </figure>
           <figure class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60 sm:col-span-2">
-            <img src="https://i.imgur.com/bBX7xSF.jpg" alt="Gemeente foto 3" class="w-full h-64 object-cover"/>
-            <figcaption class="p-3 text-sky-800/80 text-sm">Aanbidding</figcaption>
+            <img src="https://i.imgur.com/bBX7xSF.jpg" alt="Foto da igreja 3" class="w-full h-64 object-cover"/>
+            <figcaption class="p-3 text-sky-800/80 text-sm">Adoração</figcaption>
           </figure>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section id="contact" class="relative py-20">
+  <!-- Contato -->
+  <section id="contato" class="relative py-20">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-sky-50/60 -z-10"></div>
     <div class="max-w-6xl mx-auto px-6 reveal">
-      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Bezoek & contact</h2>
-      <p class="mt-2 text-sky-700/80 max-w-2xl">We horen graag van je. Plan je bezoek of stel je vraag.</p>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Visita & contato</h2>
+      <p class="mt-2 text-sky-700/80 max-w-2xl">Será um prazer falar consigo. Planeie a sua visita ou envie a sua mensagem.</p>
       <div class="mt-10 grid lg:grid-cols-2 gap-8">
         <div class="rounded-2xl border border-sky-200 bg-white/70 p-6">
-          <div class="font-semibold text-sky-900">Adres</div>
-          <div class="text-sky-800/80">Bredabaan 449, Antwerp, Belgium</div>
-          <iframe title="Map" class="w-full h-64 mt-4 rounded-xl border border-sky-200"
+          <div class="font-semibold text-sky-900">Endereço</div>
+          <div class="text-sky-800/80">Bredabaan 449, Antuérpia, Bélgica</div>
+          <iframe title="Mapa" class="w-full h-64 mt-4 rounded-xl border border-sky-200"
             src="https://www.google.com/maps?q=Bredabaan%20449,%20Antwerp,%20Belgium&output=embed"></iframe>
         </div>
         <div class="rounded-2xl border border-sky-200 bg-white/70 p-6">
-          <form onsubmit="event.preventDefault(); alert('Bedankt! We nemen spoedig contact op. (Voeg later back-end toe)');" class="space-y-4">
+          <form onsubmit="event.preventDefault(); alert('Obrigado! Entraremos em contacto em breve. (Adicionar back-end depois)');" class="space-y-4">
             <div class="grid md:grid-cols-2 gap-4">
-              <input required placeholder="Naam" class="w-full rounded-xl border border-sky-200 bg-white/70 px-4 py-3 outline-none focus:ring-4 focus:ring-sky-200" />
+              <input required placeholder="Nome" class="w-full rounded-xl border border-sky-200 bg-white/70 px-4 py-3 outline-none focus:ring-4 focus:ring-sky-200" />
               <input required type="email" placeholder="E-mail" class="w-full rounded-xl border border-sky-200 bg-white/70 px-4 py-3 outline-none focus:ring-4 focus:ring-sky-200" />
             </div>
-            <input placeholder="Telefoon (optioneel)" class="w-full rounded-xl border border-sky-200 bg-white/70 px-4 py-3 outline-none focus:ring-4 focus:ring-sky-200" />
-            <textarea required placeholder="Bericht" rows="4" class="w-full rounded-xl border border-sky-200 bg-white/70 px-4 py-3 outline-none focus:ring-4 focus:ring-sky-200"></textarea>
-            <button class="inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-5 py-3 font-medium shadow hover:shadow-lg">Verstuur</button>
+            <input placeholder="Telefone (opcional)" class="w-full rounded-xl border border-sky-200 bg-white/70 px-4 py-3 outline-none focus:ring-4 focus:ring-sky-200" />
+            <textarea required placeholder="Mensagem" rows="4" class="w-full rounded-xl border border-sky-200 bg-white/70 px-4 py-3 outline-none focus:ring-4 focus:ring-sky-200"></textarea>
+            <button class="inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-5 py-3 font-medium shadow hover:shadow-lg">Enviar</button>
           </form>
-          <div class="mt-6 grid sm:grid-cols-3 gap-6">
+
+          <!-- Contactos empilhados (um por linha) -->
+          <div class="mt-6 space-y-3">
             <div>
               <div class="text-sm uppercase tracking-wide text-sky-700/70">E-mail</div>
-              <a href="mailto:assembleia_missoes@hotmail.com" class="mt-1 block font-semibold text-sky-900">assembleia_missoes@hotmail.com</a>
+              <a href="mailto:assembleia_missoes@hotmail.com" class="mt-1 block font-semibold text-sky-900 break-words">assembleia_missoes@hotmail.com</a>
             </div>
             <div>
-              <div class="text-sm uppercase tracking-wide text-sky-700/70">Telefoon</div>
+              <div class="text-sm uppercase tracking-wide text-sky-700/70">Telefone</div>
               <a href="tel:+32465961934" class="mt-1 block font-semibold text-sky-900">0465 96 19 34</a>
             </div>
             <div>
-              <div class="text-sm uppercase tracking-wide text-sky-700/70">Adres</div>
-              <div class="mt-1 font-semibold text-sky-900">Bredabaan 449, Antwerp</div>
+              <div class="text-sm uppercase tracking-wide text-sky-700/70">Endereço</div>
+              <div class="mt-1 font-semibold text-sky-900">Bredabaan 449, Antuérpia</div>
             </div>
           </div>
         </div>
@@ -376,33 +366,33 @@
     </div>
   </section>
 
-  <!-- Footer -->
+  <!-- Rodapé -->
   <footer class="relative overflow-hidden">
     <div class="absolute inset-0 -z-10 bg-gradient-to-t from-sky-100 via-white to-white"></div>
     <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center gap-6">
       <div class="flex items-center gap-3">
-        <img id="footer-logo" class="h-10 w-10 rounded object-contain" alt="Kerk logo" />
+        <img id="footer-logo" class="h-10 w-10 rounded object-contain" alt="Logo da igreja" />
         <div>
           <div class="font-bold text-sky-900" id="footer-brand"></div>
           <div class="text-sm text-sky-700/80" id="copyright"></div>
         </div>
       </div>
       <div class="md:ml-auto flex flex-wrap gap-3 text-sm text-sky-700/80">
-        <a href="#over" class="hover:text-sky-900">Over</a>
-        <a href="#diensten" class="hover:text-sky-900">Diensten</a>
-        <a href="#media" class="hover:text-sky-900">Media</a>
-        <a href="#contact" class="hover:text-sky-900">Contact</a>
+        <a href="#sobre" class="hover:text-sky-900">Sobre</a>
+        <a href="#cultos" class="hover:text-sky-900">Cultos</a>
+        <a href="#midia" class="hover:text-sky-900">Mídia</a>
+        <a href="#contato" class="hover:text-sky-900">Contato</a>
       </div>
     </div>
   </footer>
 
-  <!-- JS: merk, reveal, slimme countdown, nachtmodus -->
+  <!-- JS: marca, reveal, countdown inteligente, modo noturno -->
   <script>
-    // Merk
+    // Marca
     document.getElementById('brand').textContent = CHURCH_NAME;
     document.getElementById('hero-brand').textContent = CHURCH_NAME;
     document.getElementById('footer-brand').textContent = CHURCH_NAME;
-    document.getElementById('copyright').textContent = `© ${new Date().getFullYear()} – Alle rechten voorbehouden`;
+    document.getElementById('copyright').textContent = `© ${new Date().getFullYear()} – Todos os direitos reservados`;
     document.getElementById('logo').src = LOGO_URL;
     document.getElementById('footer-logo').src = LOGO_URL;
 
@@ -412,26 +402,26 @@
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // ===== Slimme countdown naar eerstvolgende dienst =====
-    // Dagen: 0=Zondag, 1=Ma, 2=Di, 3=Wo, 4=Do, 5=Vr, 6=Za
+    // ===== Contagem regressiva inteligente =====
+    // Dias: 0=Dom, 1=Seg, 2=Ter, 3=Qua, 4=Qui, 5=Sex, 6=Sáb
     const services = [
-      { name: "Bijbelstudie", day: 0, start: "09:00", end: "10:30", label: "Zondag 09:00–10:30" },
-      { name: "Hoofddienst", day: 0, start: "10:30", end: "12:30", label: "Zondag 10:30–12:30" },
-      { name: "Donderdagavonddienst", day: 4, start: "19:30", end: "21:00", label: "Donderdag 19:30–21:00" },
+      { name: "Estudo Bíblico", day: 0, start: "09:00", end: "10:30", label: "Domingo 09:00–10:30" },
+      { name: "Culto Principal", day: 0, start: "10:30", end: "12:30", label: "Domingo 10:30–12:30" },
+      { name: "Culto de Quinta-feira", day: 4, start: "19:30", end: "21:00", label: "Quinta-feira 19:30–21:00" },
     ];
 
     function parseHM(hm){ const [h,m]=hm.split(":").map(Number); return {h,m}; }
-    function nextOccurrence(day, hm){ // volgende startdatum (in de toekomst) voor deze service
+    function nextOccurrence(day, hm){
       const {h,m} = parseHM(hm);
       const now = new Date();
       const d = new Date(now);
       const diffDays = (day - d.getDay() + 7) % 7;
       d.setDate(d.getDate() + diffDays);
       d.setHours(h,m,0,0);
-      if (d <= now) d.setDate(d.getDate() + 7); // volgende week
+      if (d <= now) d.setDate(d.getDate() + 7);
       return d;
     }
-    function thisWeekRange(day, startHM, endHM){ // start & eind dit weekslot (kan verleden/heden/toekomst zijn)
+    function thisWeekRange(day, startHM, endHM){
       const {h:sh, m:sm} = parseHM(startHM);
       const {h:eh, m:em} = parseHM(endHM);
       const now = new Date();
@@ -442,9 +432,8 @@
       const end = new Date(d); end.setHours(eh,em,0,0);
       return {start, end};
     }
-    function formatHM(d){ return d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); }
-    function formatDayNL(d){
-      const days = ["Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"];
+    function formatDayPT(d){
+      const days = ["Domingo","Segunda-feira","Terça-feira","Quarta-feira","Quinta-feira","Sexta-feira","Sábado"];
       return days[d.getDay()];
     }
 
@@ -455,42 +444,20 @@
 
     function pickNextService(){
       const now = new Date();
-      // check of iets NU bezig is
+      // Em andamento?
       for (const s of services){
-        const {start, end} = thisWeekRange(s.day, s.start, s.end);
-        // indien al voorbij deze week, check vorige week
-        let st = start, en = end;
-        if (end < now) { // misschien is het volgende week aan de beurt
-          st = new Date(start); st.setDate(st.getDate() + 7);
-          en = new Date(end);   en.setDate(en.getDate() + 7);
-        }
-        if (st <= now && now <= en){
-          return { status: "live", service: s, start: st, end: en };
+        let {start, end} = thisWeekRange(s.day, s.start, s.end);
+        if (end < now) { start = new Date(start); start.setDate(start.getDate()+7); end = new Date(end); end.setDate(end.getDate()+7); }
+        if (start <= now && now <= end){
+          return { status: "live", service: s, start, end };
         }
       }
-      // anders: eerstvolgende start in toekomst
+      // Próxima que começa
       const options = services.map(s => ({ s, start: nextOccurrence(s.day, s.start) }));
       options.sort((a,b)=>a.start - b.start);
-      return { status: "upcoming", service: options[0].s, start: options[0].start, end: thisWeekRange(options[0].s.day, options[0].s.start, options[0].s.end).end };
-    }
-
-    function renderCountdown(){
-      const now = new Date();
-      const pick = pickNextService();
-      if (pick.status === "live"){
-        nextServiceNameEl.textContent = `${pick.service.name} – BEZIG`;
-        nextServiceTimeEl.textContent = `${formatDayNL(pick.start)} ${pick.service.start}–${pick.service.end}`;
-        nextServiceLabelHero.textContent = `Dienst bezig: ${pick.service.name} (${pick.service.start}–${pick.service.end})`;
-        // Tel af naar einde van de dienst
-        const s = Math.max(0, Math.floor((pick.end - now)/1000));
-        updateCountdownBlocks(s);
-      } else {
-        nextServiceNameEl.textContent = pick.service.name;
-        nextServiceTimeEl.textContent = `${formatDayNL(pick.start)} ${pick.service.start}–${pick.service.end}`;
-        nextServiceLabelHero.textContent = `Eerstvolgende dienst: ${pick.service.name} – ${formatDayNL(pick.start)} ${pick.service.start}`;
-        const s = Math.max(0, Math.floor((pick.start - now)/1000));
-        updateCountdownBlocks(s);
-      }
+      const picked = options[0];
+      const end = thisWeekRange(picked.s.day, picked.s.start, picked.s.end).end;
+      return { status: "upcoming", service: picked.s, start: picked.start, end };
     }
 
     function updateCountdownBlocks(totalSeconds){
@@ -498,16 +465,33 @@
       const hours = Math.floor((totalSeconds%86400)/3600);
       const minutes = Math.floor((totalSeconds%3600)/60);
       const seconds = totalSeconds%60;
-      countdownEl.innerHTML = ['dagen','uren','min','sec'].map((label,i)=>{
+      countdownEl.innerHTML = ['dias','horas','min','seg'].map((label,i)=>{
         const v = [days,hours,minutes,seconds][i].toString().padStart(2,'0');
         return `<div class="text-center"><div class="text-3xl font-extrabold text-sky-900 tabular-nums">${v}</div><div class="text-xs uppercase text-sky-700/70">${label}</div></div>`;
       }).join('');
     }
 
+    function renderCountdown(){
+      const now = new Date();
+      const pick = pickNextService();
+      if (pick.status === "live"){
+        nextServiceNameEl.textContent = `${pick.service.name} – AO VIVO`;
+        nextServiceTimeEl.textContent = `${formatDayPT(pick.start)} ${pick.service.start}–${pick.service.end}`;
+        nextServiceLabelHero.textContent = `Culto a decorrer: ${pick.service.name} (${pick.service.start}–${pick.service.end})`;
+        const s = Math.max(0, Math.floor((pick.end - now)/1000));
+        updateCountdownBlocks(s);
+      } else {
+        nextServiceNameEl.textContent = pick.service.name;
+        nextServiceTimeEl.textContent = `${formatDayPT(pick.start)} ${pick.service.start}–${pick.service.end}`;
+        nextServiceLabelHero.textContent = `Próximo culto: ${pick.service.name} — ${formatDayPT(pick.start)} ${pick.service.start}`;
+        const s = Math.max(0, Math.floor((pick.start - now)/1000));
+        updateCountdownBlocks(s);
+      }
+    }
     renderCountdown();
     setInterval(renderCountdown, 1000);
 
-    // Nachtmodus toggle + bewaren in localStorage
+    // Modo noturno (guardar preferência)
     const html = document.documentElement;
     const toggleBtn = document.getElementById('nightToggle');
     const iconSun = document.getElementById('icon-sun');
