@@ -12,12 +12,17 @@
     .reveal { opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.show { opacity: 1; transform: translateY(0); }
 
+    /* --- Dag/Nacht achtergrond van de hero --- */
+    .hero-sky { background: linear-gradient(to bottom, #e0f2fe, #ffffff); }
+    .night .hero-sky { background: linear-gradient(to bottom, #0b1220, #0f172a); }
+
     /* --- Animaties voor de kerk --- */
     @keyframes cloud-move { from { transform: translateX(-15%); } to { transform: translateX(115%); } }
     @keyframes floatY { 0% { transform: translateY(0); } 50% { transform: translateY(-6px);} 100% { transform: translateY(0);} }
     @keyframes swing { 0% { transform: rotate(-10deg);} 50% { transform: rotate(10deg);} 100% { transform: rotate(-10deg);} }
     @keyframes spin { to { transform: rotate(360deg);} }
     @keyframes glow { from { fill-opacity: .45;} to { fill-opacity: .9;} }
+    @keyframes twinkle { 0%,100% { opacity:.2 } 50% { opacity:.9 } }
 
     svg .cloud { opacity:.9; animation: cloud-move 38s linear infinite; }
     svg .cloud.delay-1 { animation-delay: -8s; animation-duration: 45s; opacity:.75;}
@@ -26,9 +31,19 @@
     svg .tower-bell { transform-box: fill-box; transform-origin: 50% 8%; animation: swing 2.8s ease-in-out infinite; }
     svg .window-glow { animation: glow 3s ease-in-out infinite alternate; }
     svg .hover-float { animation: floatY 6s ease-in-out infinite; }
+
+    /* Nachtmodus voor de illustratie */
+    svg .skynight, svg .stars, svg .moon { display:none; }
+    .night svg .skynight, .night svg .stars, .night svg .moon { display:block; }
+    .night svg .sun, .night svg .sun-rays, .night svg .cloud { display:none; }
+    .night svg .window-glow { animation-duration: 1.6s; }
     /* deur-licht opent bij hover op de illustratie */
-    .church-anim:hover .door-light { transform: scaleY(1); opacity: .6; }
+    .church-anim:hover .door-light { transform: scaleY(1); opacity: .65; }
     .door-light { transform-origin: 50% 100%; transform: scaleY(0); opacity:0; transition: transform .5s ease, opacity .5s ease; }
+
+    /* Knop-styles voor de nachtmodus toggle (extra zichtbaar) */
+    .toggle { transition: transform .2s ease; }
+    .toggle:active { transform: scale(.96); }
   </style>
 </head>
 <body class="bg-white text-sky-950">
@@ -52,18 +67,24 @@
           <a href="#media" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Media</a>
           <a href="#contact" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Contact</a>
         </nav>
+        <!-- Nachtmodus toggle -->
+        <button id="nightToggle" class="toggle ml-2 inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-3 py-2 text-sm">
+          <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.5 6.5-1.5-1.5M8 7 6.5 5.5m11 0L16.5 7M7 17l-1.5 1.5"/></svg>
+          <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          <span id="toggleText" class="hidden sm:inline">Nachtmodus</span>
+        </button>
       </div>
     </div>
   </header>
 
   <!-- Hero -->
   <section id="home" class="relative min-h-[90vh] pt-32 overflow-hidden">
-    <div class="absolute inset-0 -z-10 bg-gradient-to-b from-sky-100 via-white to-white"></div>
+    <div class="hero-sky absolute inset-0 -z-10"></div>
     <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
       <div class="reveal">
         <div class="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur border border-sky-200 px-3 py-1 text-sky-900 mb-4 shadow">
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          <span class="text-sm">Komende dienst: zondag 10:30</span>
+          <span class="text-sm">Komende hoofddienst: zondag 10:30</span>
         </div>
         <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-sky-900">Welkom bij <span class="text-sky-600" id="hero-brand"></span></h1>
         <p class="mt-4 text-sky-800/80 text-lg max-w-xl">Een warme gemeenschap waar Jezus centraal staat. Samen aanbidden, samen groeien, samen dienen.</p>
@@ -78,16 +99,20 @@
         </div>
       </div>
 
-      <!-- Geanimeerde kerk (SVG) i.p.v. logo-afbeelding -->
+      <!-- Geanimeerde kerk (SVG) -->
       <div class="reveal">
         <div class="relative">
           <div class="absolute -inset-6 bg-sky-200/50 blur-2xl rounded-3xl"></div>
           <div class="relative rounded-3xl border border-sky-200 overflow-hidden shadow-2xl bg-gradient-to-b from-sky-50 to-white p-4">
             <svg class="church-anim w-full h-auto" viewBox="0 0 560 360" role="img" aria-label="Geanimeerde illustratie van een kerk">
               <defs>
-                <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
+                <linearGradient id="skyDay" x1="0" x2="0" y1="0" y2="1">
                   <stop offset="0%" stop-color="#e0f2fe"/>
                   <stop offset="100%" stop-color="#ffffff"/>
+                </linearGradient>
+                <linearGradient id="skyNight" x1="0" x2="0" y1="0" y2="1">
+                  <stop offset="0%" stop-color="#0b1220"/>
+                  <stop offset="100%" stop-color="#0f172a"/>
                 </linearGradient>
                 <linearGradient id="roof" x1="0" x2="1">
                   <stop offset="0%" stop-color="#0284c7"/>
@@ -99,10 +124,28 @@
                 </linearGradient>
               </defs>
 
-              <!-- Achtergrond -->
-              <rect width="560" height="360" fill="url(#sky)"/>
-              <!-- Zon -->
-              <g transform="translate(90,80)" class="hover-float">
+              <!-- Achtergrond dag/nacht -->
+              <rect class="skyday" width="560" height="360" fill="url(#skyDay)"/>
+              <rect class="skynight" width="560" height="360" fill="url(#skyNight)"/>
+
+              <!-- Sterren + maan (nacht) -->
+              <g class="stars">
+                <!-- willekeurige sterren -->
+                <circle cx="60" cy="50" r="1.5" fill="#e2e8f0" style="animation: twinkle 3s -0.2s infinite"></circle>
+                <circle cx="130" cy="90" r="1.2" fill="#e2e8f0" style="animation: twinkle 2.6s -1s infinite"></circle>
+                <circle cx="200" cy="40" r="1.4" fill="#e2e8f0" style="animation: twinkle 3.4s -1.8s infinite"></circle>
+                <circle cx="260" cy="85" r="1.1" fill="#e2e8f0" style="animation: twinkle 2.8s -2.2s infinite"></circle>
+                <circle cx="330" cy="55" r="1.3" fill="#e2e8f0" style="animation: twinkle 3.2s -0.9s infinite"></circle>
+                <circle cx="420" cy="70" r="1.6" fill="#e2e8f0" style="animation: twinkle 2.9s -1.4s infinite"></circle>
+                <circle cx="500" cy="45" r="1.2" fill="#e2e8f0" style="animation: twinkle 3.1s -0.6s infinite"></circle>
+              </g>
+              <g class="moon hover-float" transform="translate(90,80)">
+                <circle r="20" fill="#e5e7eb"/>
+                <circle r="20" fill="#0f172a" transform="translate(8, -6)"></circle>
+              </g>
+
+              <!-- Zon (dag) -->
+              <g class="sun hover-float" transform="translate(90,80)">
                 <circle r="28" fill="#fde68a"/>
                 <g class="sun-rays" stroke="#fcd34d" stroke-width="4" stroke-linecap="round">
                   <line x1="0" y1="-40" x2="0" y2="-58"/>
@@ -116,7 +159,7 @@
                 </g>
               </g>
 
-              <!-- Wolken -->
+              <!-- Wolken (dag) -->
               <g class="cloud" transform="translate(-60,40)">
                 <g fill="#ffffff">
                   <circle cx="0" cy="0" r="20"/><circle cx="20" cy="-6" r="24"/><circle cx="44" cy="0" r="18"/><rect x="-6" y="0" width="58" height="18" rx="9"/>
@@ -220,25 +263,27 @@
       <p class="mt-2 text-sky-700/80 max-w-2xl">Plan je bezoek en ontdek wat er deze week gebeurt.</p>
       <div class="mt-10 grid md:grid-cols-3 gap-6">
         <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow">
-          <div class="font-semibold text-sky-900">Zondagdienst</div>
-          <div class="text-sm text-sky-700/80">Elke zondag 10:30</div>
-          <p class="mt-2 text-sky-800/80">Ontmoeting, aanbidding en prediking.</p>
+          <div class="font-semibold text-sky-900">Bijbelstudie (Zondag)</div>
+          <div class="text-sm text-sky-700/80">09:00 – 10:30</div>
+          <p class="mt-2 text-sky-800/80">Verdiep je samen in Gods Woord.</p>
         </div>
         <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow">
-          <div class="font-semibold text-sky-900">Gebedsavond</div>
-          <div class="text-sm text-sky-700/80">Woensdag 19:30</div>
-          <p class="mt-2 text-sky-800/80">Samen bidden voor elkaar en de stad.</p>
+          <div class="font-semibold text-sky-900">Hoofddienst (Zondag)</div>
+          <div class="text-sm text-sky-700/80">10:30 – 12:30</div>
+          <p class="mt-2 text-sky-800/80">Aanbidding, prediking en gemeenschap.</p>
         </div>
         <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow">
-          <div class="font-semibold text-sky-900">Jeugd</div>
-          <div class="text-sm text-sky-700/80">Vrijdag 19:00</div>
-          <p class="mt-2 text-sky-800/80">Voor tieners en jongeren (12–18).</p>
+          <div class="font-semibold text-sky-900">Donderdag Avonddienst</div>
+          <div class="text-sm text-sky-700/80">19:30 – 21:00</div>
+          <p class="mt-2 text-sky-800/80">Door-de-weekse samenkomst en gebed.</p>
         </div>
       </div>
+
       <div class="mt-10 rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 flex flex-col md:flex-row items-center gap-6">
         <div class="flex-1">
           <div class="text-sm uppercase tracking-wide text-sky-700/70 font-medium">Countdown</div>
-          <div class="text-2xl md:text-3xl font-extrabold text-sky-900">Volgende zondagdienst start over:</div>
+          <div class="text-2xl md:text-3xl font-extrabold text-sky-900">Volgende hoofddienst start over:</div>
+          <div class="text-sm text-sky-700/70 mt-1">Zondag 10:30</div>
         </div>
         <div class="grid grid-cols-4 gap-3" id="countdown">
           <!-- JS plaatst waarden -->
@@ -329,7 +374,7 @@
     </div>
   </footer>
 
-  <!-- Kleine JS helpers: logo, brand, countdown, reveal-on-scroll -->
+  <!-- Kleine JS helpers: logo, brand, countdown, reveal-on-scroll, nachtmodus -->
   <script>
     // Merk
     document.getElementById('brand').textContent = CHURCH_NAME;
@@ -337,7 +382,7 @@
     document.getElementById('footer-brand').textContent = CHURCH_NAME;
     document.getElementById('copyright').textContent = `© ${new Date().getFullYear()} – Alle rechten voorbehouden`;
     document.getElementById('logo').src = LOGO_URL;
-    const heroLogoEl = document.getElementById('hero-logo'); if (heroLogoEl) heroLogoEl.src = LOGO_URL; // fallback als je ooit weer een img gebruikt
+    const heroLogoEl = document.getElementById('hero-logo'); if (heroLogoEl) heroLogoEl.src = LOGO_URL; // fallback als er weer een img komt
     document.getElementById('footer-logo').src = LOGO_URL;
 
     // Reveal-on-scroll
@@ -346,7 +391,7 @@
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // Countdown tot komende zondag 10:30
+    // Countdown tot komende ZONDAG 10:30 (Hoofddienst)
     const el = document.getElementById('countdown');
     function nextSunday1030(){
       const n = new Date();
@@ -372,6 +417,26 @@
     }
     render();
     setInterval(render, 1000);
+
+    // Nachtmodus toggle + bewaren in localStorage
+    const html = document.documentElement;
+    const toggleBtn = document.getElementById('nightToggle');
+    const iconSun = document.getElementById('icon-sun');
+    const iconMoon = document.getElementById('icon-moon');
+
+    function applyMode(mode){
+      if(mode === 'night'){ html.classList.add('night'); iconSun.classList.add('hidden'); iconMoon.classList.remove('hidden'); }
+      else { html.classList.remove('night'); iconMoon.classList.add('hidden'); iconSun.classList.remove('hidden'); }
+    }
+    const saved = localStorage.getItem('mode');
+    if(saved) applyMode(saved);
+
+    toggleBtn.addEventListener('click', ()=>{
+      const night = html.classList.toggle('night');
+      localStorage.setItem('mode', night ? 'night' : 'day');
+      if(night){ iconSun.classList.add('hidden'); iconMoon.classList.remove('hidden'); }
+      else { iconMoon.classList.add('hidden'); iconSun.classList.remove('hidden'); }
+    });
   </script>
 </body>
 </html>
