@@ -37,6 +37,7 @@
     .night svg .skynight, .night svg .stars, .night svg .moon { display:block; }
     .night svg .sun, .night svg .sun-rays, .night svg .cloud { display:none; }
     .night svg .window-glow { animation-duration: 1.6s; }
+
     /* deur-licht opent bij hover op de illustratie */
     .church-anim:hover .door-light { transform: scaleY(1); opacity: .65; }
     .door-light { transform-origin: 50% 100%; transform: scaleY(0); opacity:0; transition: transform .5s ease, opacity .5s ease; }
@@ -84,7 +85,7 @@
       <div class="reveal">
         <div class="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur border border-sky-200 px-3 py-1 text-sky-900 mb-4 shadow">
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
-          <span class="text-sm">Komende hoofddienst: zondag 10:30</span>
+          <span id="next-service-label" class="text-sm">Eerstvolgende dienst wordt geladen…</span>
         </div>
         <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-sky-900">Welkom bij <span class="text-sky-600" id="hero-brand"></span></h1>
         <p class="mt-4 text-sky-800/80 text-lg max-w-xl">Een warme gemeenschap waar Jezus centraal staat. Samen aanbidden, samen groeien, samen dienen.</p>
@@ -130,7 +131,6 @@
 
               <!-- Sterren + maan (nacht) -->
               <g class="stars">
-                <!-- willekeurige sterren -->
                 <circle cx="60" cy="50" r="1.5" fill="#e2e8f0" style="animation: twinkle 3s -0.2s infinite"></circle>
                 <circle cx="130" cy="90" r="1.2" fill="#e2e8f0" style="animation: twinkle 2.6s -1s infinite"></circle>
                 <circle cx="200" cy="40" r="1.4" fill="#e2e8f0" style="animation: twinkle 3.4s -1.8s infinite"></circle>
@@ -282,8 +282,10 @@
       <div class="mt-10 rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 flex flex-col md:flex-row items-center gap-6">
         <div class="flex-1">
           <div class="text-sm uppercase tracking-wide text-sky-700/70 font-medium">Countdown</div>
-          <div class="text-2xl md:text-3xl font-extrabold text-sky-900">Volgende hoofddienst start over:</div>
-          <div class="text-sm text-sky-700/70 mt-1">Zondag 10:30</div>
+          <div class="text-2xl md:text-3xl font-extrabold text-sky-900">
+            <span>Eerstvolgende dienst: </span><span id="nextServiceName">—</span>
+          </div>
+          <div class="text-sm text-sky-700/70 mt-1" id="nextServiceTime">—</div>
         </div>
         <div class="grid grid-cols-4 gap-3" id="countdown">
           <!-- JS plaatst waarden -->
@@ -312,11 +314,21 @@
             <a href="#contact" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-sky-600 text-white font-medium">Vraag hulp</a>
           </div>
         </div>
+
+        <!-- Foto's -->
         <div class="grid sm:grid-cols-2 gap-6">
-          <div class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60 p-4"><div class="aspect-video rounded-xl bg-gradient-to-br from-sky-50 to-white border border-sky-100 flex items-center justify-center text-sky-700/70">Voeg foto/video 1 toe</div></div>
-          <div class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60 p-4"><div class="aspect-video rounded-xl bg-gradient-to-br from-sky-50 to-white border border-sky-100 flex items-center justify-center text-sky-700/70">Voeg foto/video 2 toe</div></div>
-          <div class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60 p-4"><div class="aspect-video rounded-xl bg-gradient-to-br from-sky-50 to-white border border-sky-100 flex items-center justify-center text-sky-700/70">Voeg foto/video 3 toe</div></div>
-          <div class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60 p-4"><div class="aspect-video rounded-xl bg-gradient-to-br from-sky-50 to-white border border-sky-100 flex items-center justify-center text-sky-700/70">Voeg foto/video 4 toe</div></div>
+          <figure class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60">
+            <img src="https://i.imgur.com/5LTL1jJ.jpg" alt="Gemeente foto 1" class="w-full h-48 object-cover"/>
+            <figcaption class="p-3 text-sky-800/80 text-sm">Gemeente moment</figcaption>
+          </figure>
+          <figure class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60">
+            <img src="https://i.imgur.com/GtjQO3A.jpg" alt="Gemeente foto 2" class="w-full h-48 object-cover"/>
+            <figcaption class="p-3 text-sky-800/80 text-sm">Samenkomst</figcaption>
+          </figure>
+          <figure class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60 sm:col-span-2">
+            <img src="https://i.imgur.com/bBX7xSF.jpg" alt="Gemeente foto 3" class="w-full h-64 object-cover"/>
+            <figcaption class="p-3 text-sky-800/80 text-sm">Aanbidding</figcaption>
+          </figure>
         </div>
       </div>
     </div>
@@ -331,8 +343,9 @@
       <div class="mt-10 grid lg:grid-cols-2 gap-8">
         <div class="rounded-2xl border border-sky-200 bg-white/70 p-6">
           <div class="font-semibold text-sky-900">Adres</div>
-          <div class="text-sky-800/80">Straatnaam 1, 1000 Brussel (pas aan)</div>
-          <iframe title="Map" class="w-full h-64 mt-4 rounded-xl border border-sky-200" src="https://www.openstreetmap.org/export/embed.html?bbox=4.34878%2C50.845%2C4.36%2C50.85&layer=mapnik"></iframe>
+          <div class="text-sky-800/80">Bredabaan 449, Antwerp, Belgium</div>
+          <iframe title="Map" class="w-full h-64 mt-4 rounded-xl border border-sky-200"
+            src="https://www.google.com/maps?q=Bredabaan%20449,%20Antwerp,%20Belgium&output=embed"></iframe>
         </div>
         <div class="rounded-2xl border border-sky-200 bg-white/70 p-6">
           <form onsubmit="event.preventDefault(); alert('Bedankt! We nemen spoedig contact op. (Voeg later back-end toe)');" class="space-y-4">
@@ -345,9 +358,18 @@
             <button class="inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-5 py-3 font-medium shadow hover:shadow-lg">Verstuur</button>
           </form>
           <div class="mt-6 grid sm:grid-cols-3 gap-6">
-            <div><div class="text-sm uppercase tracking-wide text-sky-700/70">E-mail</div><a href="mailto:info@jouwkerk.be" class="mt-1 block font-semibold text-sky-900">info@jouwkerk.be</a></div>
-            <div><div class="text-sm uppercase tracking-wide text-sky-700/70">Telefoon</div><a href="tel:+3212345678" class="mt-1 block font-semibold text-sky-900">+32 12 34 56 78</a></div>
-            <div><div class="text-sm uppercase tracking-wide text-sky-700/70">Adres</div><div class="mt-1 font-semibold text-sky-900">Straatnaam 1, 1000 Brussel</div></div>
+            <div>
+              <div class="text-sm uppercase tracking-wide text-sky-700/70">E-mail</div>
+              <a href="mailto:assembleia_missoes@hotmail.com" class="mt-1 block font-semibold text-sky-900">assembleia_missoes@hotmail.com</a>
+            </div>
+            <div>
+              <div class="text-sm uppercase tracking-wide text-sky-700/70">Telefoon</div>
+              <a href="tel:+32465961934" class="mt-1 block font-semibold text-sky-900">0465 96 19 34</a>
+            </div>
+            <div>
+              <div class="text-sm uppercase tracking-wide text-sky-700/70">Adres</div>
+              <div class="mt-1 font-semibold text-sky-900">Bredabaan 449, Antwerp</div>
+            </div>
           </div>
         </div>
       </div>
@@ -374,7 +396,7 @@
     </div>
   </footer>
 
-  <!-- Kleine JS helpers: logo, brand, countdown, reveal-on-scroll, nachtmodus -->
+  <!-- JS: merk, reveal, slimme countdown, nachtmodus -->
   <script>
     // Merk
     document.getElementById('brand').textContent = CHURCH_NAME;
@@ -382,7 +404,6 @@
     document.getElementById('footer-brand').textContent = CHURCH_NAME;
     document.getElementById('copyright').textContent = `© ${new Date().getFullYear()} – Alle rechten voorbehouden`;
     document.getElementById('logo').src = LOGO_URL;
-    const heroLogoEl = document.getElementById('hero-logo'); if (heroLogoEl) heroLogoEl.src = LOGO_URL; // fallback als er weer een img komt
     document.getElementById('footer-logo').src = LOGO_URL;
 
     // Reveal-on-scroll
@@ -391,32 +412,100 @@
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 
-    // Countdown tot komende ZONDAG 10:30 (Hoofddienst)
-    const el = document.getElementById('countdown');
-    function nextSunday1030(){
-      const n = new Date();
-      const day = n.getDay(); // 0=zo
-      const diff = (7 - day) % 7; // dagen tot komende zondag
-      const d = new Date(n);
-      d.setDate(n.getDate() + diff);
-      d.setHours(10,30,0,0);
+    // ===== Slimme countdown naar eerstvolgende dienst =====
+    // Dagen: 0=Zondag, 1=Ma, 2=Di, 3=Wo, 4=Do, 5=Vr, 6=Za
+    const services = [
+      { name: "Bijbelstudie", day: 0, start: "09:00", end: "10:30", label: "Zondag 09:00–10:30" },
+      { name: "Hoofddienst", day: 0, start: "10:30", end: "12:30", label: "Zondag 10:30–12:30" },
+      { name: "Donderdagavonddienst", day: 4, start: "19:30", end: "21:00", label: "Donderdag 19:30–21:00" },
+    ];
+
+    function parseHM(hm){ const [h,m]=hm.split(":").map(Number); return {h,m}; }
+    function nextOccurrence(day, hm){ // volgende startdatum (in de toekomst) voor deze service
+      const {h,m} = parseHM(hm);
+      const now = new Date();
+      const d = new Date(now);
+      const diffDays = (day - d.getDay() + 7) % 7;
+      d.setDate(d.getDate() + diffDays);
+      d.setHours(h,m,0,0);
+      if (d <= now) d.setDate(d.getDate() + 7); // volgende week
       return d;
     }
-    function render(){
-      const target = nextSunday1030();
+    function thisWeekRange(day, startHM, endHM){ // start & eind dit weekslot (kan verleden/heden/toekomst zijn)
+      const {h:sh, m:sm} = parseHM(startHM);
+      const {h:eh, m:em} = parseHM(endHM);
       const now = new Date();
-      const s = Math.max(0, Math.floor((target-now)/1000));
-      const days = Math.floor(s/86400);
-      const hours = Math.floor((s%86400)/3600);
-      const minutes = Math.floor((s%3600)/60);
-      const seconds = s%60;
-      el.innerHTML = ['dagen', 'uren', 'min', 'sec'].map((label,i)=>{
+      const d = new Date(now);
+      const diffDays = (day - d.getDay() + 7) % 7;
+      d.setDate(d.getDate() + diffDays);
+      const start = new Date(d); start.setHours(sh,sm,0,0);
+      const end = new Date(d); end.setHours(eh,em,0,0);
+      return {start, end};
+    }
+    function formatHM(d){ return d.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'}); }
+    function formatDayNL(d){
+      const days = ["Zondag","Maandag","Dinsdag","Woensdag","Donderdag","Vrijdag","Zaterdag"];
+      return days[d.getDay()];
+    }
+
+    const countdownEl = document.getElementById('countdown');
+    const nextServiceNameEl = document.getElementById('nextServiceName');
+    const nextServiceTimeEl = document.getElementById('nextServiceTime');
+    const nextServiceLabelHero = document.getElementById('next-service-label');
+
+    function pickNextService(){
+      const now = new Date();
+      // check of iets NU bezig is
+      for (const s of services){
+        const {start, end} = thisWeekRange(s.day, s.start, s.end);
+        // indien al voorbij deze week, check vorige week
+        let st = start, en = end;
+        if (end < now) { // misschien is het volgende week aan de beurt
+          st = new Date(start); st.setDate(st.getDate() + 7);
+          en = new Date(end);   en.setDate(en.getDate() + 7);
+        }
+        if (st <= now && now <= en){
+          return { status: "live", service: s, start: st, end: en };
+        }
+      }
+      // anders: eerstvolgende start in toekomst
+      const options = services.map(s => ({ s, start: nextOccurrence(s.day, s.start) }));
+      options.sort((a,b)=>a.start - b.start);
+      return { status: "upcoming", service: options[0].s, start: options[0].start, end: thisWeekRange(options[0].s.day, options[0].s.start, options[0].s.end).end };
+    }
+
+    function renderCountdown(){
+      const now = new Date();
+      const pick = pickNextService();
+      if (pick.status === "live"){
+        nextServiceNameEl.textContent = `${pick.service.name} – BEZIG`;
+        nextServiceTimeEl.textContent = `${formatDayNL(pick.start)} ${pick.service.start}–${pick.service.end}`;
+        nextServiceLabelHero.textContent = `Dienst bezig: ${pick.service.name} (${pick.service.start}–${pick.service.end})`;
+        // Tel af naar einde van de dienst
+        const s = Math.max(0, Math.floor((pick.end - now)/1000));
+        updateCountdownBlocks(s);
+      } else {
+        nextServiceNameEl.textContent = pick.service.name;
+        nextServiceTimeEl.textContent = `${formatDayNL(pick.start)} ${pick.service.start}–${pick.service.end}`;
+        nextServiceLabelHero.textContent = `Eerstvolgende dienst: ${pick.service.name} – ${formatDayNL(pick.start)} ${pick.service.start}`;
+        const s = Math.max(0, Math.floor((pick.start - now)/1000));
+        updateCountdownBlocks(s);
+      }
+    }
+
+    function updateCountdownBlocks(totalSeconds){
+      const days = Math.floor(totalSeconds/86400);
+      const hours = Math.floor((totalSeconds%86400)/3600);
+      const minutes = Math.floor((totalSeconds%3600)/60);
+      const seconds = totalSeconds%60;
+      countdownEl.innerHTML = ['dagen','uren','min','sec'].map((label,i)=>{
         const v = [days,hours,minutes,seconds][i].toString().padStart(2,'0');
         return `<div class="text-center"><div class="text-3xl font-extrabold text-sky-900 tabular-nums">${v}</div><div class="text-xs uppercase text-sky-700/70">${label}</div></div>`;
       }).join('');
     }
-    render();
-    setInterval(render, 1000);
+
+    renderCountdown();
+    setInterval(renderCountdown, 1000);
 
     // Nachtmodus toggle + bewaren in localStorage
     const html = document.documentElement;
