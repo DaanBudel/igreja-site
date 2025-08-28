@@ -42,7 +42,7 @@
     .church-anim:hover .door-light { transform: scaleY(1); opacity: .65; }
     .door-light { transform-origin: 50% 100%; transform: scaleY(0); opacity:0; transition: transform .5s ease, opacity .5s ease; }
 
-    /* Botão modo noturno */
+    /* Botões/tap targets */
     .toggle { transition: transform .2s ease; }
     .toggle:active { transform: scale(.96); }
   </style>
@@ -52,28 +52,53 @@
   <script>
     const LOGO_URL = "https://scontent-bru2-1.xx.fbcdn.net/v/t39.30808-6/308109550_174812785090674_3243926765759956750_n.png?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=wNHvzVtizeQQ7kNvwFQNqkF&_nc_oc=Admjb0D8UofJxhW4JlPOg1XDCms8DTKEnvX7r2kcYL8XO60Up0I5SVj7GKMPIIjkflolKdqy0HCatjbTPUCKWTUY&_nc_zt=23&_nc_ht=scontent-bru2-1.xx&_nc_gid=IfnSgN19roKW5EmPk3ylig&oh=00_AfXMwG5uVnMbrkeJvQNc8zfkI5Rvcv9pb9I9RhouN8w7Rg&oe=68B659EE";
     const CHURCH_NAME = "Assembléia de Deus Missionária - Antuérpia";
+    const WHATSAPP_INTL = "32465961934"; // número para link wa.me sem sinais
+    const WHATSAPP_MSG = encodeURIComponent("Olá! Gostaria de mais informações sobre os cultos. Obrigado!");
   </script>
 
   <!-- Navbar -->
   <header class="fixed top-0 inset-x-0 z-50">
     <div class="max-w-6xl mx-auto px-4">
-      <div class="mt-4 flex items-center gap-4 rounded-2xl bg-white/70 backdrop-blur border border-sky-200/60 shadow px-4 py-3">
+      <div class="mt-4 flex items-center gap-3 rounded-2xl bg-white/70 backdrop-blur border border-sky-200/60 shadow px-4 py-3">
         <a href="#home" class="flex items-center gap-2">
-          <img id="logo" class="h-8 w-8 rounded object-contain" alt="Logo da igreja" />
+          <img id="logo" class="h-8 w-8 rounded object-contain" alt="Logo da igreja" loading="lazy"/>
           <span class="font-bold text-sky-900" id="brand"></span>
         </a>
+
+        <!-- Desktop nav -->
         <nav class="ml-auto hidden md:flex items-center gap-2">
           <a href="#sobre" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Sobre nós</a>
           <a href="#cultos" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Cultos</a>
           <a href="#midia" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Mídia</a>
           <a href="#contato" class="px-3 py-2 rounded-xl text-sm font-medium text-sky-900 hover:bg-sky-100">Contato</a>
         </nav>
-        <!-- Toggle modo noturno -->
-        <button id="nightToggle" class="toggle ml-2 inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-3 py-2 text-sm">
+
+        <!-- Modo noturno -->
+        <button id="nightToggle" class="toggle hidden md:inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-3 py-2 text-sm">
           <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.5 6.5-1.5-1.5M8 7 6.5 5.5m11 0L16.5 7M7 17l-1.5 1.5"/></svg>
           <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-          <span id="toggleText" class="hidden sm:inline">Modo noturno</span>
+          <span class="hidden lg:inline">Modo noturno</span>
         </button>
+
+        <!-- Mobile: hamburger + night toggle -->
+        <div class="ml-auto md:hidden flex items-center gap-2">
+          <button id="nightToggleMobile" class="toggle inline-flex items-center justify-center rounded-xl bg-sky-600 text-white p-2" aria-label="Alternar modo noturno">
+            <svg id="icon-sun-m" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2m10-10h-2M4 12H2m15.5 6.5-1.5-1.5M8 7 6.5 5.5m11 0L16.5 7M7 17l-1.5 1.5"/></svg>
+            <svg id="icon-moon-m" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+          </button>
+          <button id="mobileMenuBtn" class="toggle inline-flex items-center justify-center rounded-xl border border-sky-200 p-2" aria-expanded="false" aria-controls="mobileMenu" aria-label="Menu">
+            <svg id="icon-menu" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <svg id="icon-x" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile menu panel -->
+      <div id="mobileMenu" class="hidden md:hidden mt-2 rounded-2xl bg-white/90 backdrop-blur border border-sky-200 shadow p-3">
+        <a href="#sobre" class="block px-3 py-3 rounded-xl text-sky-900 hover:bg-sky-100">Sobre nós</a>
+        <a href="#cultos" class="block px-3 py-3 rounded-xl text-sky-900 hover:bg-sky-100">Cultos</a>
+        <a href="#midia" class="block px-3 py-3 rounded-xl text-sky-900 hover:bg-sky-100">Mídia</a>
+        <a href="#contato" class="block px-3 py-3 rounded-xl text-sky-900 hover:bg-sky-100">Contato</a>
       </div>
     </div>
   </header>
@@ -81,14 +106,14 @@
   <!-- Hero -->
   <section id="home" class="relative min-h-[90vh] pt-32 overflow-hidden">
     <div class="hero-sky absolute inset-0 -z-10"></div>
-    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+    <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-8 md:gap-10 items-center">
       <div class="reveal">
         <div class="inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur border border-sky-200 px-3 py-1 text-sky-900 mb-4 shadow">
           <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
           <span id="next-service-label" class="text-sm">Carregando o próximo culto…</span>
         </div>
-        <h1 class="text-4xl md:text-6xl font-extrabold tracking-tight text-sky-900">Bem-vindo à <span class="text-sky-600" id="hero-brand"></span></h1>
-        <p class="mt-4 text-sky-800/80 text-lg max-w-xl">Uma comunidade calorosa onde Cristo está no centro. Adoramos juntos, crescemos juntos e servimos a nossa cidade.</p>
+        <h1 class="text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight text-sky-900">Bem-vindo à <span class="text-sky-600" id="hero-brand"></span></h1>
+        <p class="mt-4 text-sky-800/80 text-base sm:text-lg max-w-xl">Uma comunidade calorosa onde Cristo está no centro. Adoramos juntos, crescemos juntos e servimos a nossa cidade.</p>
         <div class="mt-6 flex flex-wrap gap-3">
           <a href="#cultos" class="inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-5 py-3 font-medium shadow hover:shadow-lg transition">Planeie a sua visita</a>
           <a href="#midia" class="inline-flex items-center gap-2 rounded-xl border border-sky-300 text-sky-900 px-5 py-3 font-medium bg-white/70 hover:bg-sky-50 transition">Ver transmissão</a>
@@ -221,12 +246,12 @@
   </section>
 
   <!-- Sobre nós -->
-  <section id="sobre" class="relative py-20">
+  <section id="sobre" class="relative py-16 sm:py-20">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-sky-50/60 -z-10"></div>
     <div class="max-w-6xl mx-auto px-6 reveal">
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Sobre nós</h2>
       <p class="mt-2 text-sky-700/80 max-w-2xl">Nossa missão é tornar Jesus conhecido e discipular pessoas em amor e verdade.</p>
-      <div class="mt-10 grid md:grid-cols-2 gap-8 items-center">
+      <div class="mt-8 md:mt-10 grid md:grid-cols-2 gap-8 items-center">
         <div>
           <p class="text-sky-800/90 leading-relaxed">Somos uma comunidade que crê no poder do evangelho. Reunimo-nos para adorar a Deus, encorajar uns aos outros e servir a cidade. Jovens e idosos, de todas as origens — você é bem-vindo como é.</p>
           <ul class="mt-6 space-y-3 text-sky-800/90">
@@ -238,7 +263,7 @@
         <div class="relative">
           <div class="absolute -inset-4 bg-sky-100 blur-2xl rounded-3xl"></div>
           <div class="relative overflow-hidden rounded-3xl border border-sky-200 bg-white/70 p-6">
-            <blockquote class="text-xl md:text-2xl text-sky-900 font-semibold leading-relaxed">“Porque, onde estiverem dois ou três reunidos em meu nome, ali estou no meio deles.” <span class="text-sky-600">(Mt 18:20)</span></blockquote>
+            <blockquote class="text-lg md:text-2xl text-sky-900 font-semibold leading-relaxed">“Porque, onde estiverem dois ou três reunidos em meu nome, ali estou no meio deles.” <span class="text-sky-600">(Mt 18:20)</span></blockquote>
           </div>
         </div>
       </div>
@@ -246,12 +271,12 @@
   </section>
 
   <!-- Cultos -->
-  <section id="cultos" class="relative py-20">
+  <section id="cultos" class="relative py-16 sm:py-20">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-sky-50/60 -z-10"></div>
     <div class="max-w-6xl mx-auto px-6 reveal">
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Cultos & reuniões</h2>
       <p class="mt-2 text-sky-700/80 max-w-2xl">Planeie a sua visita e descubra o que acontece esta semana.</p>
-      <div class="mt-10 grid md:grid-cols-3 gap-6">
+      <div class="mt-8 md:mt-10 grid md:grid-cols-3 gap-6">
         <div class="rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 shadow">
           <div class="font-semibold text-sky-900">Estudo Bíblico (Domingo)</div>
           <div class="text-sm text-sky-700/80">09:00 – 10:30</div>
@@ -269,7 +294,7 @@
         </div>
       </div>
 
-      <div class="mt-10 rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 flex flex-col md:flex-row items-center gap-6">
+      <div class="mt-8 md:mt-10 rounded-2xl border border-sky-200 bg-white/70 backdrop-blur p-6 flex flex-col md:flex-row items-center gap-6">
         <div class="flex-1">
           <div class="text-sm uppercase tracking-wide text-sky-700/70 font-medium">Contagem regressiva</div>
           <div class="text-2xl md:text-3xl font-extrabold text-sky-900">
@@ -277,22 +302,22 @@
           </div>
           <div class="text-sm text-sky-700/70 mt-1" id="nextServiceTime">—</div>
         </div>
-        <div class="grid grid-cols-4 gap-3" id="countdown"><!-- JS injeta valores --></div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full sm:w-auto" id="countdown"><!-- JS injeta valores --></div>
       </div>
     </div>
   </section>
 
   <!-- Mídia -->
-  <section id="midia" class="relative py-20">
+  <section id="midia" class="relative py-16 sm:py-20">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-sky-50/60 -z-10"></div>
     <div class="max-w-6xl mx-auto px-6 reveal">
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Mídia & Transmissão</h2>
       <p class="mt-2 text-sky-700/80 max-w-2xl">Assista à última mensagem ou acompanhe ao vivo.</p>
-      <div class="mt-10 grid lg:grid-cols-2 gap-8 items-start">
+      <div class="mt-8 md:mt-10 grid lg:grid-cols-2 gap-8 items-start">
         <div class="rounded-2xl border border-sky-200 bg-white/70 p-4">
           <div class="aspect-video w-full overflow-hidden rounded-xl bg-sky-50 border border-sky-200 flex items-center justify-center">
             <!-- Substitua a src pela sua playlist/vídeo do YouTube -->
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PL" title="Player do YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe class="w-full h-full" src="https://www.youtube.com/embed/videoseries?list=PL" title="Player do YouTube" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen loading="lazy"></iframe>
           </div>
           <div class="mt-4 flex items-center justify-between">
             <div>
@@ -306,15 +331,15 @@
         <!-- Fotos -->
         <div class="grid sm:grid-cols-2 gap-6">
           <figure class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60">
-            <img src="https://i.imgur.com/5LTL1jJ.jpg" alt="Foto da igreja 1" class="w-full h-48 object-cover"/>
+            <img src="https://i.imgur.com/5LTL1jJ.jpg" alt="Foto da igreja 1" class="w-full h-48 object-cover" loading="lazy"/>
             <figcaption class="p-3 text-sky-800/80 text-sm">Momento da igreja</figcaption>
           </figure>
           <figure class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60">
-            <img src="https://i.imgur.com/GtjQO3A.jpg" alt="Foto da igreja 2" class="w-full h-48 object-cover"/>
+            <img src="https://i.imgur.com/GtjQO3A.jpg" alt="Foto da igreja 2" class="w-full h-48 object-cover" loading="lazy"/>
             <figcaption class="p-3 text-sky-800/80 text-sm">Reunião</figcaption>
           </figure>
           <figure class="relative overflow-hidden rounded-2xl border border-sky-200 bg-white/60 sm:col-span-2">
-            <img src="https://i.imgur.com/bBX7xSF.jpg" alt="Foto da igreja 3" class="w-full h-64 object-cover"/>
+            <img src="https://i.imgur.com/bBX7xSF.jpg" alt="Foto da igreja 3" class="w-full h-64 object-cover" loading="lazy"/>
             <figcaption class="p-3 text-sky-800/80 text-sm">Adoração</figcaption>
           </figure>
         </div>
@@ -323,17 +348,17 @@
   </section>
 
   <!-- Contato -->
-  <section id="contato" class="relative py-20">
+  <section id="contato" class="relative py-16 sm:py-20">
     <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-sky-50/60 -z-10"></div>
     <div class="max-w-6xl mx-auto px-6 reveal">
       <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-sky-900">Visita & contato</h2>
       <p class="mt-2 text-sky-700/80 max-w-2xl">Será um prazer falar consigo. Planeie a sua visita ou envie a sua mensagem.</p>
-      <div class="mt-10 grid lg:grid-cols-2 gap-8">
+      <div class="mt-8 md:mt-10 grid lg:grid-cols-2 gap-8">
         <div class="rounded-2xl border border-sky-200 bg-white/70 p-6">
           <div class="font-semibold text-sky-900">Endereço</div>
           <div class="text-sky-800/80">Bredabaan 449, Antuérpia, Bélgica</div>
           <iframe title="Mapa" class="w-full h-64 mt-4 rounded-xl border border-sky-200"
-            src="https://www.google.com/maps?q=Bredabaan%20449,%20Antwerp,%20Belgium&output=embed"></iframe>
+            src="https://www.google.com/maps?q=Bredabaan%20449,%20Antwerp,%20Belgium&output=embed" loading="lazy"></iframe>
         </div>
         <div class="rounded-2xl border border-sky-200 bg-white/70 p-6">
           <form onsubmit="event.preventDefault(); alert('Obrigado! Entraremos em contacto em breve. (Adicionar back-end depois)');" class="space-y-4">
@@ -343,7 +368,15 @@
             </div>
             <input placeholder="Telefone (opcional)" class="w-full rounded-xl border border-sky-200 bg-white/70 px-4 py-3 outline-none focus:ring-4 focus:ring-sky-200" />
             <textarea required placeholder="Mensagem" rows="4" class="w-full rounded-xl border border-sky-200 bg-white/70 px-4 py-3 outline-none focus:ring-4 focus:ring-sky-200"></textarea>
-            <button class="inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-5 py-3 font-medium shadow hover:shadow-lg">Enviar</button>
+            <div class="flex flex-wrap gap-3">
+              <button class="inline-flex items-center gap-2 rounded-xl bg-sky-600 text-white px-5 py-3 font-medium shadow hover:shadow-lg">Enviar</button>
+              <!-- Botão WhatsApp (contato) -->
+              <a id="waBtnContact" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-xl bg-green-500 text-white px-5 py-3 font-medium shadow hover:shadow-lg">
+                <!-- ícone WhatsApp -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.77 11.77 0 0 0 12.02 0C5.5 0 .22 5.27.22 11.78c0 2.07.54 4.1 1.58 5.9L0 24l6.48-1.72a11.75 11.75 0 0 0 5.54 1.41h.01c6.51 0 11.78-5.27 11.78-11.78 0-3.15-1.23-6.12-3.29-8.2ZM12.03 21.3h-.01a9.53 9.53 0 0 1-4.86-1.33l-.35-.2-3.85 1.02 1.03-3.76-.23-.39a9.56 9.56 0 0 1-1.47-5.13c0-5.28 4.3-9.57 9.58-9.57 2.55 0 4.95.99 6.76 2.8a9.53 9.53 0 0 1 2.81 6.77c0 5.28-4.29 9.59-9.41 9.59Zm5.38-7.21c-.29-.15-1.72-.84-1.99-.94-.27-.1-.47-.15-.68.15-.2.29-.78.94-.95 1.13-.17.19-.35.21-.64.06-.29-.15-1.23-.45-2.34-1.43-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.12.29-.32.43-.47.15-.17.2-.29.29-.48.1-.19.05-.36-.02-.52-.07-.15-.68-1.65-.93-2.25-.24-.58-.49-.5-.68-.51l-.58-.01c-.2 0-.52.07-.79.36-.27.29-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.19 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.35.19 1.86.11.57-.09 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34Z"/></svg>
+                Conversar no WhatsApp
+              </a>
+            </div>
           </form>
 
           <!-- Contactos empilhados (um por linha) -->
@@ -364,6 +397,12 @@
         </div>
       </div>
     </div>
+
+    <!-- Botão flutuante do WhatsApp (fixo) -->
+    <a id="waBtnFloat" class="fixed bottom-5 right-5 z-50 inline-flex items-center justify-center rounded-full bg-green-500 text-white p-4 shadow-lg hover:shadow-xl"
+       target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="currentColor"><path d="M20.52 3.48A11.77 11.77 0 0 0 12.02 0C5.5 0 .22 5.27.22 11.78c0 2.07.54 4.1 1.58 5.9L0 24l6.48-1.72a11.75 11.75 0 0 0 5.54 1.41h.01c6.51 0 11.78-5.27 11.78-11.78 0-3.15-1.23-6.12-3.29-8.2ZM12.03 21.3h-.01a9.53 9.53 0 0 1-4.86-1.33l-.35-.2-3.85 1.02 1.03-3.76-.23-.39a9.56 9.56 0 0 1-1.47-5.13c0-5.28 4.3-9.57 9.58-9.57 2.55 0 4.95.99 6.76 2.8a9.53 9.53 0 0 1 2.81 6.77c0 5.28-4.29 9.59-9.41 9.59Zm5.38-7.21c-.29-.15-1.72-.84-1.99-.94-.27-.1-.47-.15-.68.15-.2.29-.78.94-.95 1.13-.17.19-.35.21-.64.06-.29-.15-1.23-.45-2.34-1.43-.86-.77-1.44-1.72-1.61-2.01-.17-.29-.02-.45.13-.6.13-.12.29-.32.43-.47.15-.17.2-.29.29-.48.1-.19.05-.36-.02-.52-.07-.15-.68-1.65-.93-2.25-.24-.58-.49-.5-.68-.51l-.58-.01c-.2 0-.52.07-.79.36-.27.29-1.04 1.02-1.04 2.49 0 1.47 1.07 2.89 1.22 3.09.15.19 2.1 3.2 5.08 4.49.71.31 1.26.49 1.7.63.71.22 1.35.19 1.86.11.57-.09 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.26-.19-.55-.34Z"/></svg>
+    </a>
   </section>
 
   <!-- Rodapé -->
@@ -371,7 +410,7 @@
     <div class="absolute inset-0 -z-10 bg-gradient-to-t from-sky-100 via-white to-white"></div>
     <div class="max-w-6xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center gap-6">
       <div class="flex items-center gap-3">
-        <img id="footer-logo" class="h-10 w-10 rounded object-contain" alt="Logo da igreja" />
+        <img id="footer-logo" class="h-10 w-10 rounded object-contain" alt="Logo da igreja" loading="lazy"/>
         <div>
           <div class="font-bold text-sky-900" id="footer-brand"></div>
           <div class="text-sm text-sky-700/80" id="copyright"></div>
@@ -386,7 +425,7 @@
     </div>
   </footer>
 
-  <!-- JS: marca, reveal, countdown inteligente, modo noturno -->
+  <!-- JS: marca, reveal, countdown inteligente, modo noturno, mobile menu, WhatsApp -->
   <script>
     // Marca
     document.getElementById('brand').textContent = CHURCH_NAME;
@@ -493,23 +532,52 @@
 
     // Modo noturno (guardar preferência)
     const html = document.documentElement;
-    const toggleBtn = document.getElementById('nightToggle');
+    const nightToggle = document.getElementById('nightToggle');
+    const nightToggleMobile = document.getElementById('nightToggleMobile');
     const iconSun = document.getElementById('icon-sun');
     const iconMoon = document.getElementById('icon-moon');
+    const iconSunM = document.getElementById('icon-sun-m');
+    const iconMoonM = document.getElementById('icon-moon-m');
 
     function applyMode(mode){
-      if(mode === 'night'){ html.classList.add('night'); iconSun.classList.add('hidden'); iconMoon.classList.remove('hidden'); }
-      else { html.classList.remove('night'); iconMoon.classList.add('hidden'); iconSun.classList.remove('hidden'); }
+      if(mode === 'night'){
+        html.classList.add('night');
+        iconSun?.classList.add('hidden'); iconMoon?.classList.remove('hidden');
+        iconSunM?.classList.add('hidden'); iconMoonM?.classList.remove('hidden');
+      } else {
+        html.classList.remove('night');
+        iconMoon?.classList.add('hidden'); iconSun?.classList.remove('hidden');
+        iconMoonM?.classList.add('hidden'); iconSunM?.classList.remove('hidden');
+      }
     }
     const saved = localStorage.getItem('mode');
     if(saved) applyMode(saved);
+    nightToggle?.addEventListener('click', ()=>{ const night = html.classList.toggle('night'); localStorage.setItem('mode', night?'night':'day'); applyMode(night?'night':'day'); });
+    nightToggleMobile?.addEventListener('click', ()=>{ const night = html.classList.toggle('night'); localStorage.setItem('mode', night?'night':'day'); applyMode(night?'night':'day'); });
 
-    toggleBtn.addEventListener('click', ()=>{
-      const night = html.classList.toggle('night');
-      localStorage.setItem('mode', night ? 'night' : 'day');
-      if(night){ iconSun.classList.add('hidden'); iconMoon.classList.remove('hidden'); }
-      else { iconMoon.classList.add('hidden'); iconSun.classList.remove('hidden'); }
+    // Mobile menu
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const iconMenu = document.getElementById('icon-menu');
+    const iconX = document.getElementById('icon-x');
+    mobileBtn?.addEventListener('click', ()=>{
+      const open = mobileMenu.classList.toggle('hidden') === false;
+      mobileBtn.setAttribute('aria-expanded', String(open));
+      iconMenu.classList.toggle('hidden', open);
+      iconX.classList.toggle('hidden', !open);
     });
+    mobileMenu?.querySelectorAll('a').forEach(a=>a.addEventListener('click', ()=>{
+      mobileMenu.classList.add('hidden');
+      mobileBtn.setAttribute('aria-expanded','false');
+      iconMenu.classList.remove('hidden'); iconX.classList.add('hidden');
+    }));
+
+    // WhatsApp links
+    const waUrl = `https://wa.me/${WHATSAPP_INTL}?text=${WHATSAPP_MSG}`;
+    const waBtnFloat = document.getElementById('waBtnFloat');
+    const waBtnContact = document.getElementById('waBtnContact');
+    if (waBtnFloat) waBtnFloat.href = waUrl;
+    if (waBtnContact) waBtnContact.href = waUrl;
   </script>
 </body>
 </html>
